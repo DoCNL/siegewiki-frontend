@@ -4,6 +4,7 @@ import { Operator } from '../operator.model';
 
 @Component({
   selector: 'app-operator-detail',
+
   templateUrl: './operator-detail.component.html',
   styleUrls: ['./operator-detail.component.css']
 })

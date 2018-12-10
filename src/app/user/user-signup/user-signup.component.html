@@ -1,6 +1,13 @@
-<form class="register-form">
-  <input type="text" placeholder="name"/>
-  <input type="password" placeholder="password"/>
-  <button>create</button>
-  <p class="message">Already registered? <a href="#">Sign In</a></p>
-</form>
+<div class="login-page">
+  <div class="form">
+    <form class="login-form">
+      <input [(ngModel)]="signupUserData.name" name="name" type="text" placeholder="username"/>
+      <input [(ngModel)]="signupUserData.password" name="password" type="password" placeholder="password" required/>
+      <button (click)="signupUser()" type="button">Sign up</button>
+      <p class="message">
+        Already registered?
+        <a routerLink='/login' routerLinkActive="active">Log in</a>
+      </p>
+    </form>
+  </div>
+</div>

@@ -6,10 +6,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Injectable({
     providedIn: 'root'
   })
-  
+
 export class BackendService {
-    private _operatorsUrl = "http://siegewikibackend.herokuapp.com/api/operators";
-    private _operatorUrl = "http://siegewikibackend.herokuapp.com/api/operator";
+    public _operatorsUrl = "http://siegewikibackend.herokuapp.com/api/operators/";
+    public _operatorUrl = "http://siegewikibackend.herokuapp.com/api/operator/";
 
     constructor(private http: HttpClient) { }
 

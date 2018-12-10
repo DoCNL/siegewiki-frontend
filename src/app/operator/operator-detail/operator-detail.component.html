@@ -1,12 +1,14 @@
 <div *ngIf="operator">
-  <div class="card">
-      <div class="card-body">
+  <div class="content">
+  <div class="card" >
+      <div class="card-body" >
           <h5 class="card-title">
               Detailed Information about {{operator.name | uppercase}}
             </h5>
             <hr/>
             <p class="card-text">
-
+              <img [src]="operator.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+              <br>
               <b>Name:</b> 
               <br/>
               {{operator.name}}
@@ -19,10 +21,6 @@
               <br/>
               {{operator.side}}
               <br/>
-              <b>season: </b>
-              <br/>
-              {{operator.imageLink}}
-              <br/>
             </p>
       </div> <div>
               <a class="btn btn-warning editbutton">Edit</a> 
@@ -30,5 +28,5 @@
       </div>            
       
   </div>
-
+</div>
 </div>

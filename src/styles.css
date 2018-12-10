@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-.half-black {
-    background-color: grey;
+.header-grey {
+    background-color: #444444;
     border-radius: 25 px;
 }
 body {
-    /*background-image: url('frontendbackground.png');*/
+    background-position: center;
+    background-position-y: 50px;
     background-image: url('sledgebackground.jpg');
     background-size: cover;
 }
