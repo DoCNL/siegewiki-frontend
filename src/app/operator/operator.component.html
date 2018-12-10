@@ -1,0 +1,16 @@
+<div class="row mt-5">
+  <div class="col-md-4 mb-3" *ngFor="let operator of operators">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">
+          {{operator.name}}
+        </h5>
+        <p class="card-text">
+          {{operator.side}}
+        </p>
+        <a (click)="onSelect(operator)" class="btn btn-primary">More info</a>
+      </div>
+    </div>
+  </div>
+</div>
+<app-operator-detail [operator]="selectedOperator"></app-operator-detail>
