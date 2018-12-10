@@ -1,0 +1,34 @@
+<div *ngIf="operator">
+  <div class="card">
+      <div class="card-body">
+          <h5 class="card-title">
+              Detailed Information about {{operator.name | uppercase}}
+            </h5>
+            <hr/>
+            <p class="card-text">
+
+              <b>Name:</b> 
+              <br/>
+              {{operator.name}}
+              <br/>
+              <b>Description:</b> 
+              <br/>
+              {{operator.description}}
+              <br/>
+              <b>Side:</b>
+              <br/>
+              {{operator.side}}
+              <br/>
+              <b>season: </b>
+              <br/>
+              {{operator.imageLink}}
+              <br/>
+            </p>
+      </div> <div>
+              <a class="btn btn-warning editbutton">Edit</a> 
+              <a class="btn btn-danger deletebutton">Delete</a> 
+      </div>            
+      
+  </div>
+
+</div>
