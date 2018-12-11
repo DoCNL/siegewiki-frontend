@@ -7,6 +7,9 @@ import { OperatorComponent } from './operator/operator.component';
 import { OperatorEditComponent } from './operator/operator-edit/operator-edit.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserLogoutComponent } from './user/user-logout/user-logout.component';
+import { UserComponent } from './user/user.component';
+import { OperatorCreateComponent } from './operator/operator-create/operator-create.component';
 
 const routes: Routes = [
   //default/home routes
@@ -21,8 +24,16 @@ const routes: Routes = [
 
   //user routes
   {
+    path:'user',
+    component: UserComponent
+  },
+  {
     path:'login',
     component: UserLoginComponent
+  },
+  {
+    path:'logout',
+    component: UserLogoutComponent
   },
   {
     path:'signup',
@@ -41,6 +52,10 @@ const routes: Routes = [
   {
     path:'operators',
     component: OperatorComponent
+  },
+  {
+    path:'operator/create',
+    component: OperatorCreateComponent
   },
   {
     path:'operator/edit',

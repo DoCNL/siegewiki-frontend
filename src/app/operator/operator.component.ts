@@ -22,6 +22,14 @@ export class OperatorComponent implements OnInit {
     )
   }
 
+  refreshOperators() {
+    return this._backendService.getOperators()
+    .subscribe(
+      res => this.operators = res,
+      err => console.log(err)
+    )
+  }
+
   onSelect(operator:Operator) : void {
     this.selectedOperator = operator
   }

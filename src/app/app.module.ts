@@ -19,6 +19,7 @@ import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { OperatorCreateComponent } from './operator/operator-create/operator-create.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
     OperatorDetailComponent,
     OperatorEditComponent,
     UserDeleteComponent,
-    UserEditComponent
+    UserEditComponent,
+    OperatorCreateComponent
   ],
   imports: [
     BrowserModule,

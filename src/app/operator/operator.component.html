@@ -1,4 +1,26 @@
-<div class="row mt-5">
+
+<div class="col-md-6 mt-5 floatleft">
+  <app-operator-detail [operator]="selectedOperator"></app-operator-detail>
+</div>
+
+<div class="mt-5 floatright">
+    <a routerLink='/operator/create' routerLinkActive="active" class="btn btn-primary">Create operator</a>
+  <div class="col-md-4 mb-2" *ngFor="let operator of operators">
+    <div class="login-page">
+      <div class="form">
+        <form class="login-form">
+          <h4>{{operator.name}}</h4>
+          <p>{{operator.side}}</p>
+          <a (click)="onSelect(operator)" class="btn btn-primary">More info</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- @@@old list display using bootstrap card
+  <div class="row mt-5">
   <div class="col-md-4 mb-3" *ngFor="let operator of operators">
     <div class="card text-center">
       <div class="card-body">
@@ -13,4 +35,4 @@
     </div>
   </div>
 </div>
-<app-operator-detail [operator]="selectedOperator"></app-operator-detail>
+<app-operator-detail [operator]="selectedOperator"></app-operator-detail> -->

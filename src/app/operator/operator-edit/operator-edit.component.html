@@ -1,8 +1,23 @@
-<div class="row">
-    <div class="col-md-2 mt-5"></div>
-    <div class="col-md-4 mt-5 card">
-        <p>
-        Operator edit works
-        </p>
-    </div>
+<div *ngIf="operator">
+        <div class="content login-page form login-form">
+                <h5 class="card-title">Edit operator: {{operator.name}}</h5>
+            <hr/>
+            <p class="card-text">
+              <b>Name (old: {{operator.name}}):</b> 
+              <br>
+              <input [(ngModel)]="operatorNewName" name="name" type="text" placeholder="name"/>
+              <br>
+              <b>Description:</b> 
+              <input [(ngModel)]="operatorNewDesc" name="description" type="text" placeholder="description"/>
+              <br>
+              <b>Image link:</b> 
+              <input [(ngModel)]="operatorNewImg" name="imageLink" type="text" placeholder="image link"/>
+              <br>
+              <b>Side (old: {{operator.side}}):</b>
+              <input [(ngModel)]="operatorNewSide" name="side" type="text" placeholder="side"/>
+              <br>
+            </p>
+            <a (click)="editOperator()" class="btn btn-warning  mt-2 mr-2">Confirm</a> 
+            <a (click)="refresh()" class="btn btn-primary  mt-2 mr-2">Cancel</a> 
+      </div>
 </div>

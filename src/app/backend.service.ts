@@ -11,7 +11,7 @@ import { User } from './user/user.model';
 export class BackendService {
     //operator urls
     public _operatorsUrl = "http://siegewikibackend.herokuapp.com/api/operators/";
-    //public _operatorUrl = "http://siegewikibackend.herokuapp.com/api/operator/";
+    public _operatorUrl = "http://siegewikibackend.herokuapp.com/api/operator/";
 
     //user urls
     public _userUrl = "http://siegewikibackend.herokuapp.com/api/user/";
@@ -24,20 +24,41 @@ export class BackendService {
     }
     
     //user http requests
-    deleteUser(user) {
+    deleteUser(name, pass ) {
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type':  'application/json',
-              'name': user.name,
-              'password': user.pass
+              'name': name,
+              'password': pass
             })
           };
         return this.http.delete<any>(this._userUrl, httpOptions );
     }
 
-    editUser(user) {
+    editUser(user: {}) {
+        console.log(user)
         return this.http.put<any>(this._userUrl, user);
     }
 
+    //operator http requests
+    createOperator(operator: {}) {
+        console.log(operator)
+        return this.http.post<any>(this._operatorUrl, operator);
+    }
+
+    editOperator(operator: {}) {
+        console.log(operator)
+        return this.http.put<any>(this._operatorUrl, operator);
+    }
+
+    deleteOperator(_id: any) {
+    const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          '_id': _id
+        })
+      };
+    return this.http.delete<any>(this._operatorUrl, httpOptions );
+    }
 
 }

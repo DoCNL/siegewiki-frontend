@@ -1,9 +1,40 @@
+<app-operator-edit [operator]="selectedOperator"></app-operator-edit>
+<br>
+<div *ngIf="operator">
+  <div class="content login-page form login-form">
+            <h5 class="card-title">
+              {{operator.name}} operator information
+              </h5>
+              <hr/>
+              <p>
+                <img [src]="operator.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+                <br>
+                <b>Name:</b> 
+                <br/>
+                {{operator.name}}
+                <br/>
+                <b>Description:</b> 
+                <br/>
+                {{operator.description}}
+                <br/>
+                <b>Side:</b>
+                <br/>
+                {{ operator.name }} can only be played as {{operator.side}}
+                <br/>
+              </p>
+              <button *ngIf="_authService.loggedIn()" (click)="onSelect(operator)" type="button" class="btn btn-warning  mt-2 mr-2">Edit</button> 
+              <button *ngIf="_authService.loggedIn()" (click)="deleteOperator()" type="button" class="btn btn-danger mt-2 mr-2">Delete</button>
+  </div>
+</div>
+
+<!-- @@@old detail with bootstrap card
+<app-operator-edit [operator]="selectedOperator"></app-operator-edit>
 <div *ngIf="operator">
   <div class="content">
   <div class="card" >
       <div class="card-body" >
           <h5 class="card-title">
-              Detailed Information about {{operator.name | uppercase}}
+            {{operator.name}} operator information
             </h5>
             <hr/>
             <p class="card-text">
@@ -19,14 +50,13 @@
               <br/>
               <b>Side:</b>
               <br/>
-              {{operator.side}}
+              {{ operator.name }} can only be played as {{operator.side}}
               <br/>
             </p>
-      </div> <div>
-              <a class="btn btn-warning editbutton">Edit</a> 
-              <a class="btn btn-danger deletebutton">Delete</a> 
-      </div>            
-      
+            <a (click)="onSelect(operator)" class="btn btn-warning  mt-2 mr-2">Edit</a> 
+             editmeoutagainpls<a (click)="onSelect(operator)" class="btn btn-warning  mt-2 mr-2">Edit</a>
+            <a class="btn btn-danger mt-2">Delete</a>
+      </div>
   </div>
 </div>
-</div>
+</div> -->

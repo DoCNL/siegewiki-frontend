@@ -7,9 +7,11 @@ import { BackendService } from '../../backend.service';
   templateUrl: './user-delete.component.html',
   styleUrls: ['./user-delete.component.css']
 })
+
 export class UserDeleteComponent implements OnInit {
 
-  deleteUserData = {};
+  deleteUserDataName: string;
+  deleteUserDataPass: string;
 
   constructor(
     private _authGuard: AuthGuard,
@@ -21,7 +23,7 @@ export class UserDeleteComponent implements OnInit {
   }
 
   deleteUser() {
-    this._backendService.deleteUser(this.deleteUserData)
+    this._backendService.deleteUser(this.deleteUserDataName, this.deleteUserDataPass)
     .subscribe(
       res => console.log(res),
       err => console.log(err)

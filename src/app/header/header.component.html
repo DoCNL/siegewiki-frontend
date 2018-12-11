@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark header-grey">
+<nav class="navbar navbar-expand-lg navbar-dark header-grey fixedpos">
     <a class="navbar-brand" href="#">Siege</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,25 +10,23 @@
           <a class="nav-link" routerLink="/home" routerlinkActive="active">Home</a>
         </li>
         <li class="nav-item">
-            <select class="form-control" id="exampleFormControlSelect1">
-                <option  routerLink="/operators" routerlinkActive="active">Operators</option>
-                <option>Create</option>
-                <option  routerLink="/operator/edit" routerlinkActive="active">Edit</option>
-                <option>Delete</option>
-            </select>
-        </li> 
+            <a  class="nav-link" routerLink="/operators" routerlinkActive="active">Operators</a>
+          </li> 
       </ul>
   
       <ul class="navbar-nav navbar-right">
-            <li class="nav-item">
-                    <a class="nav-link" routerLink="/deleteUser" routerLinkActive="active">Delete user</a>
-                  </li>
+            <li class="nav-item" >
+              <a *ngIf="_authService.loggedIn()" class="nav-link" routerLink="/user" routerLinkActive="active">Account</a>
+            </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/login" routerLinkActive="active">Log in</a>
+          <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Log In</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+          <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/signup" routerLinkActive="active">Sign Up</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">Log Out</a>
+          </li>
       </ul>
     </div>
   </nav>   

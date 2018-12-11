@@ -3,10 +3,12 @@
     background-color: #444444;
     border-radius: 25 px;
 }
+
 body {
-    background-position: center;
+    background-position-x: 0px;
     background-position-y: 50px;
     background-image: url('sledgebackground.jpg');
+    background-attachment: fixed;
     background-size: cover;
 }
 

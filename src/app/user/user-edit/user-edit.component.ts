@@ -20,8 +20,13 @@ export class UserEditComponent implements OnInit {
     this._authGuard.canActivate();
   }
 
+  displayEditName() {
+    if (this.userEditData === {}) return false;
+    else return true;
+  }
+
   editUser() {
-    console.log(this.userEditData)
+    //console.log(this.userEditData)
     this._backendService.editUser(this.userEditData)
     .subscribe(
       res => console.log(res),

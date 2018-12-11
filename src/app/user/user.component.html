@@ -1,3 +1,30 @@
-<p>
-  user works!
-</p>
+<div class="login-page">
+  <div class="form">
+    <form class="login-form">
+      <h4>Account options</h4>
+      <a routerLink="/user/edit" routerLinkActive="active" class="btn btn-warning mt-2">Change password</a><br>
+      <a routerLink="/user/delete" routerLinkActive="active" class="btn btn-danger mt-2">Delete account</a><br>
+      <a (click)="_authService.logoutUser()" class="btn btn-secondary mt-2">Logout</a>
+    </form>
+  </div>
+</div>
+
+ 
+
+
+<!-- @@@old menu using bootstrap card
+  <div class="row mt-5">
+    <div class="col-md-4 mb-3"></div>
+    <div class="col-md-4 mb-3">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">
+            Account options
+          </h5>
+          <a routerLink="/user/edit" routerLinkActive="active" class="btn btn-warning mt-2">Change password</a><br>
+          <a routerLink="/user/delete" routerLinkActive="active" class="btn btn-danger mt-2">Delete account</a><br>
+          <a (click)="_authService.logoutUser()" class="btn btn-secondary mt-2">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div> -->

@@ -21,7 +21,7 @@ export class UserLoginComponent implements OnInit {
         res => {
           console.log(res)
           localStorage.setItem('token', res.token)
-          this._router.navigate(['/user/edit'])
+          this._router.navigate(['/user'])
         },
         err => console.log(err)
       )
