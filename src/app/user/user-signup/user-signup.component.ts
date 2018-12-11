@@ -19,9 +19,12 @@ export class UserSignupComponent implements OnInit {
   signupUser() {
     this._auth.signupUser(this.signupUserData)
       .subscribe(
-        res => console.log(res),
+        res => {
+          console.log(res)
+          localStorage.setItem('token', res.token)
+          this._router.navigate(['/operators'])
+        },
         err => console.log(err)
       )
   }
-
 }

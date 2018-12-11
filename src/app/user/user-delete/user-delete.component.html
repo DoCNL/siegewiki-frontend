@@ -1,0 +1,12 @@
+<div class="login-page">
+    <div class="form">
+      <form class="login-form">
+          <input [(ngModel)]="deleteUserData" name="name" type="text" placeholder="username"/>
+          <input [(ngModel)]="deleteUserPass" name="password" type="password" placeholder="password"/>
+        <p class="message">
+          Are you sure you want to delete user: <br> {{ deleteUserData }}? <br>
+        </p>
+        <button (click)="deleteUser()" type="button" class="btn btn-danger deletebutton">Delete</button>
+      </form>
+    </div>
+  </div>

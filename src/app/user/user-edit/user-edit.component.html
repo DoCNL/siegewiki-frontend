@@ -1,0 +1,13 @@
+<div class="login-page">
+    <div class="form">
+      <form class="login-form">
+          <input [(ngModel)]="userEditData" name="name" type="text" placeholder="username"/>
+          <input [(ngModel)]="userEditData" name="password" type="password" placeholder="password"/>
+          <input [(ngModel)]="userEditData" name="newPassword" type="password" placeholder="new password"/>
+        <p class="message">
+          Are you sure you want to edit user: <br> {{ userProps.name }}? <br>
+        </p>
+        <button (click)="editUser()" type="button" class="btn btn-warning warningbutton">Edit</button>
+      </form>
+    </div>
+  </div>

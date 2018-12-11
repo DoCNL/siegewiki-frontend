@@ -11,15 +11,18 @@
         </li>
         <li class="nav-item">
             <select class="form-control" id="exampleFormControlSelect1">
-                <option class="nav-link" routerLink="/operators" routerlinkActive="active" >Operators</option>
+                <option  routerLink="/operators" routerlinkActive="active">Operators</option>
                 <option>Create</option>
-                <option>Edit</option>
+                <option  routerLink="/operator/edit" routerlinkActive="active">Edit</option>
                 <option>Delete</option>
             </select>
         </li> 
       </ul>
   
       <ul class="navbar-nav navbar-right">
+            <li class="nav-item">
+                    <a class="nav-link" routerLink="/deleteUser" routerLinkActive="active">Delete user</a>
+                  </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/login" routerLinkActive="active">Log in</a>
         </li>
