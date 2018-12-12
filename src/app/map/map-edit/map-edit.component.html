@@ -1,0 +1,23 @@
+<div *ngIf="map">
+  <div class="content login-page form login-form">
+          <h5 class="card-title">Edit map: {{map.name}}</h5>
+      <hr/>
+      <p class="card-text">
+        <b>Name (old: {{map.name}}):</b> 
+        <br>
+        <input [(ngModel)]="mapNewName" name="name" type="text" placeholder="name"/>
+        <br>
+        <b>Description:</b> 
+        <input [(ngModel)]="mapNewDesc" name="description" type="text" placeholder="description"/>
+        <br>
+        <b>Image link:</b> 
+        <input [(ngModel)]="mapNewImg" name="imageLink" type="text" placeholder="image link"/>
+        <br>
+        <b>Side (old: {{map.side}}):</b>
+        <input [(ngModel)]="mapNewAv" name="side" type="checkbox"/>
+        <br>
+      </p>
+      <a (click)="editMap()" class="btn btn-warning  mt-2 mr-2">Confirm</a> 
+      <a (click)="refresh()" class="btn btn-primary  mt-2 mr-2">Cancel</a> 
+</div>
+</div>

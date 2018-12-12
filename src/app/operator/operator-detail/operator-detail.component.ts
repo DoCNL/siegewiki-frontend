@@ -27,7 +27,7 @@ export class OperatorDetailComponent implements OnInit {
   }
 
   onSelect(operator:Operator) : void {
-    this.selectedOperator = operator
+    this.selectedOperator = operator;
   }
 
   

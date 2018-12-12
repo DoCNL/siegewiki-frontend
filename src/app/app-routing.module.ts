@@ -10,6 +10,13 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserLogoutComponent } from './user/user-logout/user-logout.component';
 import { UserComponent } from './user/user.component';
 import { OperatorCreateComponent } from './operator/operator-create/operator-create.component';
+import { MapEditComponent } from './map/map-edit/map-edit.component';
+import { MapCreateComponent } from './map/map-create/map-create.component';
+import { MapComponent } from './map/map.component';
+import { SeasonComponent } from './season/season.component';
+import { SeasonCreateComponent } from './season/season-create/season-create.component';
+import { SeasonEditComponent } from './season/season-edit/season-edit.component';
+import { SeasonPopulateComponent } from './season/season-populate/season-populate.component';
 
 const routes: Routes = [
   //default/home routes
@@ -60,6 +67,38 @@ const routes: Routes = [
   {
     path:'operator/edit',
     component: OperatorEditComponent
+  },
+
+  //Map routes
+  {
+    path:'maps',
+    component: MapComponent
+  },
+  {
+    path:'map/create',
+    component: MapCreateComponent
+  },
+  {
+    path:'map/edit',
+    component: MapEditComponent
+  },
+
+  //Season routes
+  {
+    path:'seasons',
+    component: SeasonComponent
+  },
+  {
+    path:'season/create',
+    component: SeasonCreateComponent
+  },
+  {
+    path:'season/edit',
+    component: SeasonEditComponent
+  },
+  {
+    path:'season/populate',
+    component: SeasonPopulateComponent
   }
 ];
 

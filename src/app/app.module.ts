@@ -20,6 +20,15 @@ import { TokenInterceptorService } from './token-interceptor.service';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { OperatorCreateComponent } from './operator/operator-create/operator-create.component';
+import { MapComponent } from './map/map.component';
+import { MapEditComponent } from './map/map-edit/map-edit.component';
+import { MapDetailComponent } from './map/map-detail/map-detail.component';
+import { MapCreateComponent } from './map/map-create/map-create.component';
+import { SeasonComponent } from './season/season.component';
+import { SeasonDetailComponent } from './season/season-detail/season-detail.component';
+import { SeasonCreateComponent } from './season/season-create/season-create.component';
+import { SeasonEditComponent } from './season/season-edit/season-edit.component';
+import { SeasonPopulateComponent } from './season/season-populate/season-populate.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +44,16 @@ import { OperatorCreateComponent } from './operator/operator-create/operator-cre
     OperatorEditComponent,
     UserDeleteComponent,
     UserEditComponent,
-    OperatorCreateComponent
+    OperatorCreateComponent,
+    MapComponent,
+    MapEditComponent,
+    MapDetailComponent,
+    MapCreateComponent,
+    SeasonComponent,
+    SeasonDetailComponent,
+    SeasonCreateComponent,
+    SeasonEditComponent,
+    SeasonPopulateComponent
   ],
   imports: [
     BrowserModule,

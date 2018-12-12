@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../backend.service';
 import { Operator } from './operator.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-operator',
@@ -12,7 +13,10 @@ export class OperatorComponent implements OnInit {
   operators = []
   selectedOperator: Operator;
 
-  constructor(private _backendService: BackendService) { }
+  constructor(
+    private _authService: AuthService,
+    private _backendService: BackendService
+    ) { }
 
   ngOnInit() {
     return this._backendService.getOperators()

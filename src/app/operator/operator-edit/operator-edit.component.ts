@@ -1,7 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthGuard } from '../../auth.guard';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { Operator } from '../operator.model';
 import { BackendService } from '../../backend.service';
 import { OperatorComponent } from '../operator.component';
@@ -22,15 +19,12 @@ export class OperatorEditComponent implements OnInit {
   operatorNewSide = '';
 
   constructor(
-    private _authGuard: AuthGuard,
-    private _router: Router,
     private _backendService: BackendService,
     private _operatorComp: OperatorComponent,
     private _authService: AuthService
     ) { }
 
   ngOnInit() {
-   //this._authGuard.canActivate();
   }
 
   editOperator() {

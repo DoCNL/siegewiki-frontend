@@ -1,0 +1,27 @@
+<div class="content login-page form login-form">
+  <h5 class="card-title">Populate season: </h5>
+  <hr />
+  <div class="form-group">
+    <label>Season: </label>
+    <select id="SeasonSelector" [(ngModel)]="seasonCreateData._id" name="_id" style="width: 100%;"
+      class="dropdownoperator">
+      <option *ngFor="let season of seasons" value="{{season._id}}">{{season.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Operator: </label>
+    <select id="OperatorSelector" [(ngModel)]="seasonCreateData.operatorName" name="operatorName" style="width: 100%;"
+      class="dropdownoperator">
+      <option *ngFor="let operator of operators" value="{{operator.name}}">{{operator.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Map: </label>
+    <select id="WorldSelector" [(ngModel)]="seasonCreateData.siegeMapName" name="siegeMapName" style="width: 100%;"
+      class="dropdownoperator">
+      <option *ngFor="let map of maps" value="{{map.name}}">{{map.name}}</option>
+    </select>
+  </div>
+  <a (click)="populateSeason()" class="btn btn-warning  mt-2 mr-2">Confirm</a>
+  <a routerLink='/seasons' routerLinkActive="active" class="btn btn-primary">Cancel</a>
+</div>

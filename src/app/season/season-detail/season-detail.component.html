@@ -1,0 +1,31 @@
+<app-season-edit [season]="selectedSeason"></app-season-edit>
+<br>
+<div *ngIf="season">
+  <div class="content login-page form login-form">
+            <h5 class="card-title">
+              {{season.name}} season information
+              </h5>
+              <hr/>
+              <h5 class="card-title">
+                <img [src]="season.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+              </h5>
+              <hr/>
+              <p> 
+                <br>
+                <b>Name:</b> 
+                <br/>
+                {{season.name}}
+                <br/> 
+                <b>Description:</b> 
+                <br/>
+                {{season.description}}
+                <br/>
+                <b>Year:</b>
+                <br/>
+                {{ season.year }} 
+                <br/>
+              </p>
+              <button *ngIf="_authService.loggedIn()" (click)="onSelect(season)" type="button" class="btn btn-warning  mt-2 mr-2">Edit</button> 
+              <button *ngIf="_authService.loggedIn()" (click)="deleteSeason()" type="button" class="btn btn-danger mt-2 mr-2">Delete</button>
+  </div>
+</div>

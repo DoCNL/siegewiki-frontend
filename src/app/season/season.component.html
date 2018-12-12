@@ -1,0 +1,19 @@
+<div class="col-md-6 mt-5 floatleft">
+  <app-season-detail [season]="selectedSeason"></app-season-detail>
+</div>
+
+<div class="mt-5 floatright">
+  <a *ngIf="_authService.loggedIn()" routerLink='/season/create' routerLinkActive="active" class="btn btn-primary">Create season</a>
+  <a *ngIf="_authService.loggedIn()" routerLink='/season/populate' routerLinkActive="active" class="btn btn-primary">Populate season</a>
+  <div class="col-md-4 mb-2" *ngFor="let season of seasons">
+    <div class="login-page">
+      <div class="form">
+        <form class="login-form">
+          <h4>{{season.name}}</h4>
+          <p>{{season.side}}</p>
+          <a (click)="onSelect(season)" class="btn btn-primary">More info</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="login-page">
+  <div class="form">
+    <form class="login-form">
+        <h4>Create a new season:<br> <br></h4>
+        <input [(ngModel)]="seasonCreateData.name" name="name" type="text" placeholder="season name"/>
+        <input [(ngModel)]="seasonCreateData.description" name="description" type="text" placeholder="description"/>
+        <input [(ngModel)]="seasonCreateData.imageLink" name="imageLink" type="text" placeholder="image link"/>
+        <input [(ngModel)]="seasonCreateData.year" name="side" type="number" placeholder="0"/>
+        <button (click)="createSeason()" type="button" class="btn btn-warning warningbutton">Confirm</button>
+    </form>
+    <a routerLink="/seasons" routerLinkActive="active" class="btn btn-primary mt-2">Return</a>
+</div>
+</div>
