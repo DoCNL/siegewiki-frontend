@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthGuard } from '../../auth.guard';
 import { BackendService } from '../../backend.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-user-delete',
@@ -15,7 +16,8 @@ export class UserDeleteComponent implements OnInit {
 
   constructor(
     private _authGuard: AuthGuard,
-    private _backendService: BackendService) {
+    private _backendService: BackendService,
+    private _authService: AuthService) {
    }
 
   ngOnInit() {
@@ -25,7 +27,9 @@ export class UserDeleteComponent implements OnInit {
   deleteUser() {
     this._backendService.deleteUser(this.deleteUserDataName, this.deleteUserDataPass)
     .subscribe(
-      res => console.log(res),
+      res => {
+        this._authService.logoutUser()
+        console.log(res)},
       err => console.log(err)
     )
   }
