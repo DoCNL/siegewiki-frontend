@@ -49,6 +49,16 @@ export class BackendService {
         return this.http.get<any>(this._operatorsUrl);
     }
 
+    getOperator(_id: any) {
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type':  'application/json',
+              '_id': _id
+            })
+          };
+        return this.http.get<any>(this._operatorUrl, httpOptions);
+    }
+
     createOperator(operator: {}) {
         console.log(operator)
         return this.http.post<any>(this._operatorUrl, operator);

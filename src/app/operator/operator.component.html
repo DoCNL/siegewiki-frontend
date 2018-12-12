@@ -3,15 +3,20 @@
 </div>
 
 <div class="mt-5 floatright">
-    <a *ngIf="_authService.loggedIn()" routerLink='/operator/create' routerLinkActive="active" class="btn btn-primary">Create operator</a>
+  <a *ngIf="_authService.loggedIn()" routerLink='/operator/create' routerLinkActive="active" class="btn btn-primary">Create operator</a>
+  <!-- <input [(ngModel)]="searchOp" type="text" placeholder="Search"/>
+  <a (click)="search()" class="btn btn-primary">Search</a>
+  <p>{{ searchOp }}</p> -->
   <div class="col-md-4 mb-2" *ngFor="let operator of operators">
-    <div class="login-page">
-      <div class="form">
-        <form class="login-form">
-          <h4>{{operator.name}}</h4>
-          <p>{{operator.side}}</p>
-          <a (click)="onSelect(operator)" class="btn btn-primary">More info</a>
-        </form>
+    <div *ngIf="isPopOp(operator)">
+      <div class="login-page">
+        <div class="form">
+          <form class="login-form">
+            <h4>{{operator.name}}</h4>
+            <p>{{operator.side}}</p>
+            <a (click)="onSelect(operator)" class="btn btn-primary">More info</a>
+          </form>
+        </div>
       </div>
     </div>
   </div>
