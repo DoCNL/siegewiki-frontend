@@ -11,19 +11,19 @@ import { User } from './user/user.model';
 export class BackendService {
     
     //user urls
-    public _userUrl = "http://siegewikibackend.herokuapp.com/api/user/";
+    public _userUrl = "https://siegewikibackend.herokuapp.com/api/user/";
 
     //operator urls
-    public _operatorsUrl = "http://siegewikibackend.herokuapp.com/api/operators/";
-    public _operatorUrl = "http://siegewikibackend.herokuapp.com/api/operator/";
+    public _operatorsUrl = "https://siegewikibackend.herokuapp.com/api/operators/";
+    public _operatorUrl = "https://siegewikibackend.herokuapp.com/api/operator/";
 
     //map urls
-    public _mapsUrl = "http://siegewikibackend.herokuapp.com/api/siegemaps/";
-    public _mapUrl = "http://siegewikibackend.herokuapp.com/api/siegemap/";
+    public _mapsUrl = "https://siegewikibackend.herokuapp.com/api/siegemaps/";
+    public _mapUrl = "https://siegewikibackend.herokuapp.com/api/siegemap/";
 
     //season urls
-    public _seasonsUrl = "http://siegewikibackend.herokuapp.com/api/seasons/";
-    public _seasonUrl = "http://siegewikibackend.herokuapp.com/api/season/";
+    public _seasonsUrl = "https://siegewikibackend.herokuapp.com/api/seasons/";
+    public _seasonUrl = "https://siegewikibackend.herokuapp.com/api/season/";
 
     constructor(private http: HttpClient) { }
     
