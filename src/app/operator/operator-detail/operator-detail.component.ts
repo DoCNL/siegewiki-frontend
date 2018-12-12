@@ -15,6 +15,7 @@ export class OperatorDetailComponent implements OnInit {
 
   @Input() operator: Operator 
   selectedOperator: Operator;
+  emptyOp: Operator;
 
   constructor(
     private _backendService: BackendService,
@@ -30,6 +31,9 @@ export class OperatorDetailComponent implements OnInit {
     this.selectedOperator = operator;
   }
 
+  removeSelectedOp(): void {
+    this.selectedOperator = this.emptyOp;
+  }
   
   deleteOperator() {
     this._backendService.deleteOperator(this.operator._id)

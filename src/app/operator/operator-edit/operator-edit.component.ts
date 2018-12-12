@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Operator } from '../operator.model';
 import { BackendService } from '../../backend.service';
 import { OperatorComponent } from '../operator.component';
+import { OperatorDetailComponent } from '../operator-detail/operator-detail.component';
 import { AuthService } from 'src/app/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class OperatorEditComponent implements OnInit {
 
-  @Input() operator: Operator; 
+  @Input() operator: Operator;
   operatorEdit;
   operatorNewName = '';
   operatorNewDesc = '';
@@ -21,7 +22,8 @@ export class OperatorEditComponent implements OnInit {
   constructor(
     private _backendService: BackendService,
     private _operatorComp: OperatorComponent,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _opDetailComp: OperatorDetailComponent
     ) { }
 
   ngOnInit() {
@@ -34,13 +36,14 @@ export class OperatorEditComponent implements OnInit {
   .subscribe(
     res => {
       this._operatorComp.refreshOperators();
+      this._opDetailComp.removeSelectedOp();
       console.log(res)},
     err => console.log(err)
   )}
   }
 
-  refresh() {
-    this._operatorComp.refreshOperators();
+  cancel() {
+    this._opDetailComp.removeSelectedOp();
   }
 
 }

@@ -3,6 +3,7 @@ import { SiegeMap } from '../map.model';
 import { BackendService } from '../../backend.service';
 import { MapComponent } from '../map.component';
 import { AuthService } from 'src/app/auth.service';
+import { MapDetailComponent } from '../map-detail/map-detail.component';
 
 @Component({
   selector: 'app-map-edit',
@@ -21,7 +22,8 @@ export class MapEditComponent implements OnInit {
   constructor(
     private _backendService: BackendService,
     private _mapComp: MapComponent,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _mapDetailComp: MapDetailComponent
   ) { }
 
   ngOnInit() {
@@ -41,5 +43,9 @@ export class MapEditComponent implements OnInit {
   
     refresh() {
       this._mapComp.refreshMaps();
+    }
+
+    cancel() {
+      this._mapDetailComp.removeSelectedMap();
     }
 }

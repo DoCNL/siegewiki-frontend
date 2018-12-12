@@ -3,6 +3,7 @@ import { Season } from '../season.model';
 import { BackendService } from '../../backend.service';
 import { SeasonComponent } from '../season.component';
 import { AuthService } from 'src/app/auth.service';
+import { SeasonDetailComponent } from '../season-detail/season-detail.component';
 
 @Component({
   selector: 'app-season-edit',
@@ -21,7 +22,8 @@ export class SeasonEditComponent implements OnInit {
   constructor(
     private _backendService: BackendService,
     private _seasonComp: SeasonComponent,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _seasonDetailComp: SeasonDetailComponent
   ) { }
 
   ngOnInit() {
@@ -43,4 +45,7 @@ export class SeasonEditComponent implements OnInit {
       this._seasonComp.refreshSeasons();
     }
 
+    cancel() {
+      this._seasonDetailComp.removeSelectedSeason();
+    }
 }

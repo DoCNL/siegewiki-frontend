@@ -34,8 +34,8 @@ export class SeasonComponent implements OnInit {
     )
   }
 
-  isDef(season: Season) {
-      if (season.name == 'Default') return false;
+  isDef(sn: Season) {
+      if (sn.name === 'Default') return false;
       else return true;
   }
 

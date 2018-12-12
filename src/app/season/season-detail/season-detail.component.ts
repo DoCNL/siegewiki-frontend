@@ -14,6 +14,7 @@ export class SeasonDetailComponent implements OnInit {
 
   @Input() season: Season 
   selectedSeason: Season;
+  emptySeason: Season;
 
   constructor(
     private _backendService: BackendService,
@@ -27,6 +28,10 @@ export class SeasonDetailComponent implements OnInit {
 
   onSelect(season:Season) : void {
     this.selectedSeason = season;
+  }
+
+  removeSelectedSeason(): void {
+    this.selectedSeason = this.emptySeason;
   }
 
   deleteSeason() {

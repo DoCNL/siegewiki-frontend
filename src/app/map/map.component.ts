@@ -12,6 +12,7 @@ export class MapComponent implements OnInit {
 
   siegemaps = []
   selectedSiegeMap: SiegeMap;
+  emptyMap: SiegeMap;
 
   constructor(
     private _authService: AuthService,
@@ -24,6 +25,10 @@ export class MapComponent implements OnInit {
       res => this.siegemaps = res,
       err => console.log(err)
     )
+  }
+
+  removeSelectedMap(): void {
+    this.selectedSiegeMap = this.emptyMap;
   }
 
   refreshMaps() {

@@ -14,6 +14,7 @@ export class MapDetailComponent implements OnInit {
 
   @Input() map: SiegeMap 
   selectedMap: SiegeMap;
+  emptyMap: SiegeMap;
 
   constructor(
     private _backendService: BackendService,
@@ -37,6 +38,10 @@ export class MapDetailComponent implements OnInit {
         console.log(res)},
       err => console.log(err)
     )
+  }
+
+  removeSelectedMap(): void {
+    this.selectedMap = this.emptyMap;
   }
 
 }

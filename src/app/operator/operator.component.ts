@@ -14,6 +14,7 @@ export class OperatorComponent implements OnInit {
   selectedOperator: Operator;
   @Input() importOp: Operator;
   searchOp: string;
+  emptyOp: Operator;
 
   constructor(
     private _authService: AuthService,
@@ -34,6 +35,10 @@ export class OperatorComponent implements OnInit {
       res => this.operators = res,
       err => console.log(err)
     )
+  }
+
+  removeSelectedOp(): void {
+    this.selectedOperator = this.emptyOp;
   }
 
   onSelect(operator:Operator) : void {
