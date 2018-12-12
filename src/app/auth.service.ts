@@ -7,8 +7,8 @@ import { Router } from '@angular/router'
 })
 export class AuthService {
 
-  private _signupUrl = "http://siegewikibackend.herokuapp.com/api/user/register/"
-  private _loginUrl = "http://siegewikibackend.herokuapp.com/api/user/login"
+  private _signupUrl = "https://siegewikibackend.herokuapp.com/api/user/register/"
+  private _loginUrl = "https://siegewikibackend.herokuapp.com/api/user/login"
 
   constructor(
     private http: HttpClient,
