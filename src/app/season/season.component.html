@@ -7,7 +7,7 @@
   <a *ngIf="_authService.loggedIn()" routerLink='/season/create' routerLinkActive="active" class="btn btn-primary">Create season</a>
   <a *ngIf="_authService.loggedIn()" routerLink='/season/populate' routerLinkActive="active" class="btn btn-primary">Populate season</a>
   <div class="col-md-4 mb-2" *ngFor="let season of seasons">
-    <div class="login-page">
+    <div *ngIf="isDef(season)" class="login-page">
       <div class="form">
         <form class="login-form">
           <h4>{{season.name}}</h4>

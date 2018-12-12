@@ -34,6 +34,11 @@ export class SeasonComponent implements OnInit {
     )
   }
 
+  isDef(season: Season) {
+      if (season.name == 'Default') return false;
+      else return true;
+  }
+
   onSelect(season:Season) : void {
     this.selectedSeason = season
   }
