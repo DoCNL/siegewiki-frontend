@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Operator } from './operator/operator.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from './user/user.model';
+import { environment } from '../environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -11,19 +12,19 @@ import { User } from './user/user.model';
 export class BackendService {
     
     //user urls
-    public _userUrl = "https://siegewikibackend.herokuapp.com/api/user/";
+    public _userUrl = environment.serverUrl + "/api/user/";
 
     //operator urls
-    public _operatorsUrl = "https://siegewikibackend.herokuapp.com/api/operators/";
-    public _operatorUrl = "https://siegewikibackend.herokuapp.com/api/operator/";
+    public _operatorsUrl = environment.serverUrl + "/api/operators/";
+    public _operatorUrl = environment.serverUrl + "/api/operator/";
 
     //map urls
-    public _mapsUrl = "https://siegewikibackend.herokuapp.com/api/siegemaps/";
-    public _mapUrl = "https://siegewikibackend.herokuapp.com/api/siegemap/";
+    public _mapsUrl = environment.serverUrl + "/api/siegemaps/";
+    public _mapUrl = environment.serverUrl + "/api/siegemap/";
 
     //season urls
-    public _seasonsUrl = "https://siegewikibackend.herokuapp.com/api/seasons/";
-    public _seasonUrl = "https://siegewikibackend.herokuapp.com/api/season/";
+    public _seasonsUrl = environment.serverUrl + "/api/seasons/";
+    public _seasonUrl = environment.serverUrl + "/api/season/";
 
     constructor(private http: HttpClient) { }
     

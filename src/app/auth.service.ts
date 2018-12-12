@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router'
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private _signupUrl = "https://siegewikibackend.herokuapp.com/api/user/register/"
-  private _loginUrl = "https://siegewikibackend.herokuapp.com/api/user/login"
+  private _signupUrl = environment.serverUrl + "/api/user/register/"
+  private _loginUrl = environment.serverUrl + "/api/user/login"
 
   constructor(
     private http: HttpClient,
