@@ -1,10 +1,49 @@
-<div class="row">
-    <div class="col-md-2 mt-5"></div>
-    <div class="col-md-4 mt-5 card">
-        <p>
-        Welcome to SiegeWiki
+<div class="row floatleft">
+  <div class="col-sm" *ngFor="let season of seasons">
+    <div class="login-page">
+      <form class="login-form">
+        <h4>{{season.name}}</h4>
+        <h5 class="card-title">
+          <img [src]="season.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+        </h5>
+        <a (click)="onSelect(season)" class="btn btn-primary">More Info</a>
         <br>
-       Imagine a carousel with seasons!
-        </p>
+      </form>
     </div>
+  </div>
 </div>
+
+<div class="row floatright">
+  <div *ngIf="this.displayS">
+    <div class="col-sm login-page form">
+      <form class="login-form">
+        <h4>{{this.seasonToShow.name}}</h4>
+        <h5 class="card-title">
+          <img [src]="this.seasonToShow.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+        </h5>
+        <p>Description: {{this.seasonToShow.description}}</p>
+        <p>Released in year: {{this.seasonToShow.year}}</p>
+        <a *ngIf="this.seasonToShow.siegeoperator" (click)="onSelectOp(this.seasonToShow)" class="btn btn-primary">Operator</a>
+      </form>
+    </div>
+  </div>
+  <!-- </div>
+
+  <div class="row floatright"> -->
+  <div class="devide" *ngIf="this.display">
+      <div *ngFor="let operator of operators">
+          <div class="col-sm login-page form" *ngIf="seasonHas(operator)">
+        <form class="login-form">
+          <h4>{{operator.name}}</h4>
+          <h5 class="card-title">
+            <img [src]="operator.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+          </h5>
+          <p>Description: {{operator.description}}</p>
+          <p>Available as: {{operator.side}}</p>
+          <!-- <a (click)="onSelect(operator)" class="btn btn-primary">More info</a> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- optionally add maps too -->

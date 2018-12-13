@@ -1,23 +1,30 @@
 <div *ngIf="season">
   <div class="content login-page form login-form">
-          <h5 class="card-title">Edit season: {{season.name}}</h5>
-      <hr/>
-      <p class="card-text">
-        <b>Name (old: {{season.name}}):</b> 
-        <br>
-        <input [(ngModel)]="seasonNewName" name="name" type="text" placeholder="name"/>
-        <br>
-        <b>Description:</b> 
-        <input [(ngModel)]="seasonNewDesc" name="description" type="text" placeholder="description"/>
-        <br>
-        <b>Image link:</b> 
-        <input [(ngModel)]="seasonNewImg" name="imageLink" type="text" placeholder="image link"/>
-        <br>
-        <b>Year (old: {{season.year}}):</b>
-        <input [(ngModel)]="seasonNewYear" name="side" type="number" placeholder="0"/>
-        <br>
-      </p>
-      <a (click)="editSeason()" class="btn btn-warning  mt-2 mr-2">Confirm</a> 
-      <a (click)="cancel()" class="btn btn-primary  mt-2 mr-2">Cancel</a> 
+    <h5 class="card-title">Edit season: {{season.name}}</h5>
+    <hr />
+    <p class="card-text">
+      <b>Name (old: {{season.name}}):</b>
+      <br>
+      <input [(ngModel)]="seasonNewName" name="name" type="text" placeholder="name" />
+      <br>
+      <b>Description:</b>
+      <input [(ngModel)]="seasonNewDesc" name="description" type="text" placeholder="description" />
+      <br>
+      <b>Image link:</b>
+      <input [(ngModel)]="seasonNewImg" name="imageLink" type="text" placeholder="image link" />
+      <br>
+      <b>Year (old: {{season.year}}):</b>
+      <input [(ngModel)]="seasonNewYear" name="side" type="number" placeholder="0" />
+      <br>
+    </p>
+    <a (click)="editSeason()" class="btn btn-warning  mt-2 mr-2">Confirm</a>
+    <a (click)="cancel()" class="btn btn-primary  mt-2 mr-2">Cancel</a>
+  </div>
 </div>
+
+<div *ngIf="this.showResultBox">
+  <div class="content login-page form login-form">
+    <h4>{{this.displayresult.result}}</h4>
+    <p>{{this.displayresult.message}}</p>
+  </div>
 </div>

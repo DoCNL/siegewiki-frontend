@@ -12,7 +12,8 @@ export class SeasonComponent implements OnInit {
 
   seasons = []
   selectedSeason: Season;
-
+  emptySeason: Season;
+  
   constructor(
     private _authService: AuthService,
     private _backendService: BackendService
@@ -21,7 +22,9 @@ export class SeasonComponent implements OnInit {
   ngOnInit() {
     return this._backendService.getSeasons()
     .subscribe(
-      res => this.seasons = res,
+      res => {
+        console.log(res)
+        this.seasons = res},
       err => console.log(err)
     )
   }
@@ -41,6 +44,10 @@ export class SeasonComponent implements OnInit {
 
   onSelect(season:Season) : void {
     this.selectedSeason = season
+  }
+
+  removeSelectedSeason(): void {
+    this.selectedSeason = this.emptySeason;
   }
 
 }

@@ -18,6 +18,8 @@ export class SeasonEditComponent implements OnInit {
   seasonNewDesc = '';
   seasonNewImg = '';
   seasonNewYear = 0;
+  displayresult = {};
+  showResultBox;
 
   constructor(
     private _backendService: BackendService,
@@ -27,6 +29,7 @@ export class SeasonEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.showResultBox = false;
   }
 
   editSeason() {
@@ -36,9 +39,29 @@ export class SeasonEditComponent implements OnInit {
     .subscribe(
       res => {
         this._seasonComp.refreshSeasons();
-        console.log(res)},
-      err => console.log(err)
+        console.log(res)
+        this.cancel();
+        this._seasonComp.removeSelectedSeason();
+        this.displayresult = {
+          result: "success",
+          message: "Season " + this.season.name + " was edited succesfully"};
+        this.showResult();
+      },
+      err => {
+        console.log(err);
+        this.displayresult = {
+          result: "Failed",
+          message: err.Error};
+        this.showResult();
+      }
     )}
+    }
+
+    showResult() {
+      this.showResultBox = true;
+      setTimeout(() => {
+        this.showResultBox = false;
+      }, 5000);
     }
 
     refresh() {

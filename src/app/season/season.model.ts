@@ -8,8 +8,8 @@ export class Season {
          public description: String,
          public imageLink: String,
          public year: Number,
-         public operator?: Operator,
-         public map?: SiegeMap){}
+         public siegeoperator?: Operator,
+         public siegemap?: SiegeMap){}
 }
 
 export class SeasonPop {
