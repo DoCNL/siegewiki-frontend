@@ -40,6 +40,7 @@ export class OperatorDetailComponent implements OnInit {
     .subscribe(
       res => {
         this._operatorComp.refreshOperators();
+        this._operatorComp.removeSelectedOp();
         console.log(res)},
       err => console.log(err)
     )

@@ -30,22 +30,22 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.display = false;
     this.displayS = false;
-    this._authGuard.canActivate();
+    //this._authGuard.canActivate();
     return this._backendService.getOperators()
-    .subscribe(
-      res => this.operators = res,
-      err => console.log(err)
-    ),
-    this._backendService.getMaps()
-    .subscribe(
-      res => this.maps = res,
-      err => console.log(err)
-  ),
-this._backendService.getSeasons()
-.subscribe(
-  res => this.seasons = res,
-  err => console.log(err)
-)
+      .subscribe(
+        res => this.operators = res,
+        err => console.log(err)
+      ),
+      this._backendService.getMaps()
+        .subscribe(
+          res => this.maps = res,
+          err => console.log(err)
+        ),
+      this._backendService.getSeasons()
+        .subscribe(
+          res => this.seasons = res,
+          err => console.log(err)
+        )
   }
 
   populateSeason() {
@@ -53,13 +53,20 @@ this._backendService.getSeasons()
       .subscribe(
         res => {
           console.log(res)
-          this._router.navigate(['/seasons'])})
+          this._router.navigate(['/seasons'])
+        })
     err => console.log(err)
   }
 
+  isDefault(checkSeason: Season) {
+    if (checkSeason.name === 'Default') return false;
+    else return true;
+  }
+
   onSelect(season: Season) {
-      this.displayS = true;
-      this.seasonToShow = season;
+    this.displayS = true;
+    this.seasonToShow = season;
+    this.display = false;
   }
 
   onSelectOp(season: Season) {
@@ -72,4 +79,6 @@ this._backendService.getSeasons()
     if (operator._id == this.operatorFromSeasonName) return true;
     else return false;
   }
+
+
 }

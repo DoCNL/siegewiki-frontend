@@ -15,6 +15,8 @@ export class MapDetailComponent implements OnInit {
   @Input() map: SiegeMap 
   selectedMap: SiegeMap;
   emptyMap: SiegeMap;
+  displayresult = {};
+  showResultBox;
 
   constructor(
     private _backendService: BackendService,
@@ -24,6 +26,7 @@ export class MapDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.showResultBox = false;
   }
 
   onSelect(map:SiegeMap) : void {
@@ -35,7 +38,14 @@ export class MapDetailComponent implements OnInit {
     .subscribe(
       res => {
         this._mapComp.refreshMaps();
-        console.log(res)},
+        this._mapComp.removeSelectedMap();
+        console.log(res)
+        this.displayresult = {
+          result: "success",
+          message: "Map was deleted succesfully"
+        };
+        this.showResult();
+      },
       err => console.log(err)
     )
   }
@@ -43,5 +53,12 @@ export class MapDetailComponent implements OnInit {
   removeSelectedMap(): void {
     this.selectedMap = this.emptyMap;
   }
+
+   showResult() {
+    this.showResultBox = true;
+    setTimeout(() => {
+      this.showResultBox = false;
+    }, 5000);
+  } 
 
 }

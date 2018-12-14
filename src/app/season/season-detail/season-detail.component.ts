@@ -15,6 +15,8 @@ export class SeasonDetailComponent implements OnInit {
   @Input() season: Season 
   selectedSeason: Season;
   emptySeason: Season;
+  displayresult = {};
+  showResultBox;
 
   constructor(
     private _backendService: BackendService,
@@ -39,10 +41,22 @@ export class SeasonDetailComponent implements OnInit {
     .subscribe(
       res => {
         this._seasonComp.refreshSeasons();
-        console.log(res)},
+        this._seasonComp.removeSelectedSeason();
+        console.log(res)
+        this.displayresult = {
+          result: "success",
+          message: "Season was deleted succesfully"
+        };
+        this.showResult();
+      },
       err => console.log(err)
     )
   }
-
+  showResult() {
+    this.showResultBox = true;
+    setTimeout(() => {
+      this.showResultBox = false;
+    }, 5000);
+  }
 
 }

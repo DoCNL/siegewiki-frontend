@@ -1,3 +1,10 @@
+<div *ngIf="this.showResultBox">
+    <div class="content login-page form login-form">
+      <h4>{{this.displayresult.result}}</h4>
+      <p>{{this.displayresult.message}}</p>
+    </div>
+  </div>
+
 <app-map-edit [map]="selectedMap"></app-map-edit>
 <br>
 <div *ngIf="map">
@@ -20,7 +27,7 @@
                 <br/>
                 {{map.description}}
                 <br/>
-                <b>Ranked:</b>
+                <b>Available in ranked:</b>
                 <br/>
                 {{ map.rankedAvailability }}
                 <br/>

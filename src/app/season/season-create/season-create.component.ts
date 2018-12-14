@@ -11,6 +11,8 @@ import { AuthGuard } from '../../auth.guard';
 export class SeasonCreateComponent implements OnInit {
 
   seasonCreateData = {};
+  displayresult = {};
+  showResultBox;
 
   constructor(
     private _backendService: BackendService,
@@ -20,6 +22,7 @@ export class SeasonCreateComponent implements OnInit {
 
   ngOnInit() {
     this._authGuard.canActivate();
+    this.showResultBox = false;
   }
 
   createSeason() {
@@ -27,10 +30,28 @@ export class SeasonCreateComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res)
-          this._router.navigate(['/seasons'])
+          this.displayresult = {
+            result: "success",
+            message: "Season was created succesfully"
+          };
+          this.showResult();
         },
-        err => console.log(err)
+        err => {
+          console.log(err);
+          this.displayresult = {
+            result: "Failed",
+            message: JSON.stringify(err.error.err.errors.name.message)
+          };
+          //message: JSON.stringify(err.error.err.errors.name.message)};
+          this.showResult();
+        }
       )
-  
-}
+  }
+  showResult() {
+    this.showResultBox = true;
+    setTimeout(() => {
+      this.showResultBox = false;
+    }, 5000);
+  }
+
 }
