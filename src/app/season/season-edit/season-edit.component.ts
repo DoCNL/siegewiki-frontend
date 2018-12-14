@@ -12,7 +12,7 @@ import { SeasonDetailComponent } from '../season-detail/season-detail.component'
 })
 export class SeasonEditComponent implements OnInit {
 
-  @Input() season: Season; 
+  @Input() season: Season;
   seasonEdit;
   seasonNewName = '';
   seasonNewDesc = '';
@@ -34,41 +34,45 @@ export class SeasonEditComponent implements OnInit {
 
   editSeason() {
     if (this._authService.loggedIn) {
-    this.seasonEdit = new Season( this.season._id, this.seasonNewName, this.seasonNewDesc, this.seasonNewImg, this.seasonNewYear)
-    this._backendService.editSeason(this.seasonEdit)
-    .subscribe(
-      res => {
-        this._seasonComp.refreshSeasons();
-        console.log(res)
-        this.cancel();
-        this._seasonComp.removeSelectedSeason();
-        this.displayresult = {
-          result: "success",
-          message: "Season " + this.season.name + " was edited succesfully"};
-        this.showResult();
-      },
-      err => {
-        console.log(err);
-        this.displayresult = {
-          result: "Failed",
-          message: err.Error};
-        this.showResult();
-      }
-    )}
+      this.seasonEdit = new Season(this.season._id, this.seasonNewName, this.seasonNewDesc, this.seasonNewImg, this.seasonNewYear)
+      this._backendService.editSeason(this.seasonEdit)
+        .subscribe(
+          res => {
+            this._seasonComp.refreshSeasons();
+            console.log(res)
+            this.cancel();
+            this._seasonComp.removeSelectedSeason();
+            this.displayresult = {
+              result: "success",
+              message: "Season " + this.season.name + " was edited succesfully"
+            };
+            this.showResult();
+          },
+          err => {
+            console.log(err);
+            this.displayresult = {
+              result: "Failed",
+              message: JSON.stringify(err.error.err.errors.description.message)
+            };
+            this.showResult();
+          }
+        )
     }
+  }
 
-    showResult() {
-      this.showResultBox = true;
-      setTimeout(() => {
-        this.showResultBox = false;
-      }, 5000);
-    }
+  refresh() {
+    this._seasonComp.refreshSeasons();
+  }
 
-    refresh() {
-      this._seasonComp.refreshSeasons();
-    }
+  cancel() {
+    this._seasonDetailComp.removeSelectedSeason();
+  }
 
-    cancel() {
-      this._seasonDetailComp.removeSelectedSeason();
-    }
+  showResult() {
+    this.showResultBox = true;
+    setTimeout(() => {
+      this.showResultBox = false;
+    }, 5000);
+  }
 }
+

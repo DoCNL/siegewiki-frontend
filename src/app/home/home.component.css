@@ -6,7 +6,7 @@ div.floatleft {
 
 div.floatright {
   width: 30%;
-  float: right;
+  float: left;
   padding-top: 5%;
 }
 
@@ -16,7 +16,14 @@ div.floatc {
 }
 
 div.devide {
-  padding-top:5%;
+  position: fixed;
+  padding-left: 50%;
+}
+
+div.devide2 {
+  position: fixed;
+  padding-right: 5%;
+  padding-top: 25%;
 }
 
 div.col-sm {

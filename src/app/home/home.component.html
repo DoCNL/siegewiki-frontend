@@ -1,6 +1,6 @@
 <div class="row floatleft">
   <div class="col-sm" *ngFor="let season of seasons">
-    <div class="login-page">
+    <div *ngIf="isDefault(season)" class="login-page">
       <form class="login-form">
         <h4>{{season.name}}</h4>
         <h5 class="card-title">
@@ -13,35 +13,34 @@
   </div>
 </div>
 
-<div class="row floatright">
-  <div *ngIf="this.displayS">
-    <div class="col-sm login-page form">
-      <form class="login-form">
-        <h4>{{this.seasonToShow.name}}</h4>
-        <h5 class="card-title">
-          <img [src]="this.seasonToShow.imageLink" alt="" style="max-width: 100%" class="img-rounded">
-        </h5>
-        <p>Description: {{this.seasonToShow.description}}</p>
-        <p>Released in year: {{this.seasonToShow.year}}</p>
-        <a *ngIf="this.seasonToShow.siegeoperator" (click)="onSelectOp(this.seasonToShow)" class="btn btn-primary">Operator</a>
-      </form>
+<div class="devide row floatright">
+  <div *ngIf="displayS">
+    <div class="col-sm login-page" style="z-index: 8">
+      <div class="form">
+        <form class="login-form">
+          <h4>{{seasonToShow.name}}</h4>
+          <br>
+          <p>{{seasonToShow.description}}</p>
+          <p>Released in year: {{seasonToShow.year}}</p>
+          <a *ngIf="seasonToShow.siegeoperator" (click)="onSelectOp(seasonToShow)" class="btn btn-primary">Operator</a>
+        </form>
+      </div>
     </div>
   </div>
-  <!-- </div>
 
-  <div class="row floatright"> -->
-  <div class="devide" *ngIf="this.display">
+  <div class="devide2 floatright">
+    <div *ngIf="display">
       <div *ngFor="let operator of operators">
-          <div class="col-sm login-page form" *ngIf="seasonHas(operator)">
-        <form class="login-form">
-          <h4>{{operator.name}}</h4>
-          <h5 class="card-title">
-            <img [src]="operator.imageLink" alt="" style="max-width: 100%" class="img-rounded">
-          </h5>
-          <p>Description: {{operator.description}}</p>
-          <p>Available as: {{operator.side}}</p>
-          <!-- <a (click)="onSelect(operator)" class="btn btn-primary">More info</a> -->
-        </form>
+        <div class="col-sm login-page" *ngIf="seasonHas(operator)">
+          <form class="login-form">
+            <h4>{{operator.name}}</h4>
+            <h5 class="card-title">
+              <img [src]="operator.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+            </h5>
+            <p>Description: {{operator.description}}</p>
+            <p>Available as: {{operator.side}}</p>
+          </form>
+        </div>
       </div>
     </div>
   </div>
