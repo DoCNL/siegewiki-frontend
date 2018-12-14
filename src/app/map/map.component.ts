@@ -39,8 +39,8 @@ export class MapComponent implements OnInit {
     )
   }
 
-
   onSelect(map:SiegeMap) : void {
     this.selectedSiegeMap = map;
   }
+  
 }

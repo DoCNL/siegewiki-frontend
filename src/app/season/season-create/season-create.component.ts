@@ -32,15 +32,17 @@ export class SeasonCreateComponent implements OnInit {
           console.log(res)
           this.displayresult = {
             result: "success",
-            message: "Season was created succesfully"};
+            message: "Season was created succesfully"
+          };
           this.showResult();
         },
         err => {
           console.log(err);
           this.displayresult = {
             result: "Failed",
-            message: JSON.stringify(err.error.err.errors.name.message)};
-              //message: JSON.stringify(err.error.err.errors.name.message)};
+            message: JSON.stringify(err.error.err.errors.name.message)
+          };
+          //message: JSON.stringify(err.error.err.errors.name.message)};
           this.showResult();
         }
       )
@@ -53,24 +55,3 @@ export class SeasonCreateComponent implements OnInit {
   }
 
 }
-
-// ​err.error.err.
-// error: {…}
-// ​​
-// err: {…}
-// ​​​
-// _message: "season validation failed"
-// ​​​
-// errors: {…}
-// ​​​​
-// name: {…}
-// ​​​​​
-// kind: "required"
-// ​​​​​
-// message: "Season name is required."
-// ​​​​​
-// name: "ValidatorError"
-// ​​​​​
-// path: "name"
-// ​​​​​
-// properties: Object { message: "Season name is required.", type: "required", path: "name" }

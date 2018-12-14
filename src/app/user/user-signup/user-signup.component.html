@@ -11,3 +11,10 @@
     </form>
   </div>
 </div>
+
+<div *ngIf="showResultBox">
+    <div class="content login-page form login-form">
+        <h4>{{displayresult.result}}</h4>
+        <p>{{displayresult.message}}</p>
+    </div>
+</div>

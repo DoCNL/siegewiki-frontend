@@ -11,6 +11,8 @@ import { AuthGuard } from '../../auth.guard';
 export class MapCreateComponent implements OnInit {
 
   mapCreateData = {};
+  displayresult = {};
+  showResultBox;
 
   constructor(
     private _backendService: BackendService,
@@ -20,6 +22,7 @@ export class MapCreateComponent implements OnInit {
 
   ngOnInit() {
     this._authGuard.canActivate();
+    this.showResultBox = false;
   }
 
   createMap() {
@@ -27,10 +30,20 @@ export class MapCreateComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res)
-          this._router.navigate(['/maps'])
+          this.displayresult = {
+            result: "success",
+            message: "Map was created succesfully"
+          };
+          this.showResult();
         },
         err => console.log(err)
       )
-  
-}
+  }
+
+  showResult() {
+    this.showResultBox = true;
+    setTimeout(() => {
+      this.showResultBox = false;
+    }, 5000);
+  }
 }

@@ -1,8 +1,15 @@
 <div class="col-md-6 mt-5 floatleft">
     <app-map-detail [map]="selectedSiegeMap"></app-map-detail>
   </div>
-
-  <div class="floatleft">
+  
+  <div *ngIf="this.showResultBox">
+      <div class="content login-page form login-form">
+        <h4>{{this.displayresult.result}}</h4>
+        <p>{{this.displayresult.message}}</p>
+      </div>
+    </div>
+    
+  <div class="editbutton">
       <a *ngIf="_authService.loggedIn()" routerLink='/map/create' routerLinkActive="active" class="btn btn-primary">Create map</a>
       </div>
   
@@ -12,7 +19,9 @@
         <div class="form">
           <form class="login-form">
             <h4>{{map.name}}</h4>
-            <b>Ranked: {{map.rankedAvailability}}</b> <br>
+            <h5 class="card-title">
+                <img [src]="map.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+              </h5>
             <a (click)="onSelect(map)" class="btn btn-primary mt-2">More info</a>
           </form>
         </div>

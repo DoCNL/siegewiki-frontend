@@ -75,4 +75,3 @@ export class SeasonEditComponent implements OnInit {
     }, 5000);
   }
 }
-

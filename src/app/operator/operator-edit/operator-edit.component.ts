@@ -37,6 +37,7 @@ export class OperatorEditComponent implements OnInit {
     res => {
       this._operatorComp.refreshOperators();
       this._opDetailComp.removeSelectedOp();
+      this._operatorComp.removeSelectedOp();
       console.log(res)},
     err => console.log(err)
   )}

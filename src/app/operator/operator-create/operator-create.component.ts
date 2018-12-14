@@ -11,6 +11,8 @@ import { AuthGuard } from '../../auth.guard';
 export class OperatorCreateComponent implements OnInit {
 
   operatorCreateData = {};
+  displayresult = {};
+  showResultBox;
 
   constructor(
     private _backendService: BackendService,
@@ -20,6 +22,7 @@ export class OperatorCreateComponent implements OnInit {
 
   ngOnInit() {
     this._authGuard.canActivate();
+    this.showResultBox = false;
   }
 
   createOperator() {
@@ -27,11 +30,20 @@ export class OperatorCreateComponent implements OnInit {
         .subscribe(
           res => {
             console.log(res)
-            this._router.navigate(['/operators'])
+            this.displayresult = {
+              result: "success",
+              message: "Operator was created succesfully"
+            };
           },
           err => console.log(err)
         )
     
   }
 
+  showResult() {
+    this.showResultBox = true;
+    setTimeout(() => {
+      this.showResultBox = false;
+    }, 5000);
+  }
 }

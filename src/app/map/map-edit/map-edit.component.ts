@@ -18,6 +18,8 @@ export class MapEditComponent implements OnInit {
   mapNewDesc = '';
   mapNewImg = '';
   mapNewAv = null;
+  displayresult = {};
+  showResultBox;
   
   constructor(
     private _backendService: BackendService,
@@ -27,6 +29,7 @@ export class MapEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.showResultBox = false;
   }
 
   editMap() {
@@ -36,7 +39,15 @@ export class MapEditComponent implements OnInit {
     .subscribe(
       res => {
         this._mapComp.refreshMaps();
-        console.log(res)},
+        this.cancel();
+        this._mapComp.removeSelectedMap();
+        console.log(res)
+        this.displayresult = {
+          result: "success",
+          message: "Map was edited succesfully"
+        };
+        this.showResult();
+      },
       err => console.log(err)
     )}
     }
@@ -47,5 +58,12 @@ export class MapEditComponent implements OnInit {
 
     cancel() {
       this._mapDetailComp.removeSelectedMap();
+    }
+
+    showResult() {
+      this.showResultBox = true;
+      setTimeout(() => {
+        this.showResultBox = false;
+      }, 5000);
     }
 }

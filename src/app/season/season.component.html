@@ -3,16 +3,21 @@
   <!-- <app-operator [importOp]="selectedOperator"></app-operator> -->
 </div>
 
-<div class="mt-5 floatright">
-  <a *ngIf="_authService.loggedIn()" routerLink='/season/create' routerLinkActive="active" class="btn btn-primary">Create season</a>
+<div class="editbutton">
+  <a *ngIf="_authService.loggedIn()" routerLink='/season/create' routerLinkActive="active" class="btn btn-primary">Create season</a> <br> <br>
   <a *ngIf="_authService.loggedIn()" routerLink='/season/populate' routerLinkActive="active" class="btn btn-primary">Populate season</a>
+</div>
+
+<div class="mt-5 floatright">
   <div class="col-md-4 mb-2" *ngFor="let season of seasons">
     <div *ngIf="isDef(season)" class="login-page">
-       
+
       <div class="form">
         <form class="login-form">
           <h4>{{season.name}}</h4>
-          <p>{{season.side}}</p>
+          <h5 class="card-title">
+              <img [src]="season.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+            </h5>
           <a (click)="onSelect(season)" class="btn btn-primary">More info</a>
         </form>
       </div>

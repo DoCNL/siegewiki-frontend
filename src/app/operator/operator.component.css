@@ -8,6 +8,12 @@ div.floatright {
     float: right;
 }
 
+div.editbutton {
+  position: fixed;
+  padding-top:5%;
+  padding-left: 0%;
+}
+
 h4 {
     color: #ffffff ;
     text-decoration: none;

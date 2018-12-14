@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.display = false;
     this.displayS = false;
-    this._authGuard.canActivate();
+    //this._authGuard.canActivate();
     return this._backendService.getOperators()
       .subscribe(
         res => this.operators = res,
