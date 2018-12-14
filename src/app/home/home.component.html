@@ -1,31 +1,49 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Siege</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/home" routerlinkActive="active">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/operators" routerlinkActive="active">Operators</a>
-      </li>
-    </ul>
-
-    <ul class="navbar-nav navbar-right">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/signup" routerLinkActive="active">Sign Up</a>
-      </li>
-    </ul>
+<div class="row floatleft">
+  <div class="col-sm" *ngFor="let season of seasons">
+    <div class="login-page">
+      <form class="login-form">
+        <h4>{{season.name}}</h4>
+        <h5 class="card-title">
+          <img [src]="season.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+        </h5>
+        <a (click)="onSelect(season)" class="btn btn-primary">More Info</a>
+        <br>
+      </form>
+    </div>
   </div>
-</nav>    
-<div class="col-md-4 ml-5 mt-5 card">
-  <p>Welcome to SiegeWiki <br>
-     This page Beats its Meat and then Yeets its Skeet
-  </p>
 </div>
+
+<div class="row floatright">
+  <div *ngIf="this.displayS">
+    <div class="col-sm login-page form">
+      <form class="login-form">
+        <h4>{{this.seasonToShow.name}}</h4>
+        <h5 class="card-title">
+          <img [src]="this.seasonToShow.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+        </h5>
+        <p>Description: {{this.seasonToShow.description}}</p>
+        <p>Released in year: {{this.seasonToShow.year}}</p>
+        <a *ngIf="this.seasonToShow.siegeoperator" (click)="onSelectOp(this.seasonToShow)" class="btn btn-primary">Operator</a>
+      </form>
+    </div>
+  </div>
+  <!-- </div>
+
+  <div class="row floatright"> -->
+  <div class="devide" *ngIf="this.display">
+      <div *ngFor="let operator of operators">
+          <div class="col-sm login-page form" *ngIf="seasonHas(operator)">
+        <form class="login-form">
+          <h4>{{operator.name}}</h4>
+          <h5 class="card-title">
+            <img [src]="operator.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+          </h5>
+          <p>Description: {{operator.description}}</p>
+          <p>Available as: {{operator.side}}</p>
+          <!-- <a (click)="onSelect(operator)" class="btn btn-primary">More info</a> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- optionally add maps too -->

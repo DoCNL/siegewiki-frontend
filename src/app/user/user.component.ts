@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { AuthGuard } from '../auth.guard';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _authService: AuthService,
+    private _authGuard: AuthGuard,) { }
 
   ngOnInit() {
+    this._authGuard.canActivate();
   }
 
 }

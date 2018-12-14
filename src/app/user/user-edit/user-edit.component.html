@@ -1,0 +1,12 @@
+<div class="login-page">
+    <div class="form">
+      <form class="login-form">
+          <h4>Change your password:<br> <br></h4>
+          <input [(ngModel)]="userEditData.name" name="name" type="text" placeholder="username"/>
+          <input [(ngModel)]="userEditData.password" name="password" type="password" placeholder="password"/>
+          <input [(ngModel)]="userEditData.newPassword" name="newPassword" type="password" placeholder="new password"/>
+        <button (click)="editUser()" type="button" class="btn btn-warning warningbutton">Confirm</button>
+      </form>
+      <a routerLink="/user" routerLinkActive="active" class="btn btn-primary mt-2">Return</a>
+    </div>
+  </div>

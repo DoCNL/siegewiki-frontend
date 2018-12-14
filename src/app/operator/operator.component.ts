@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  Input} from '@angular/core';
 import { BackendService } from '../backend.service';
 import { Operator } from './operator.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-operator',
@@ -11,8 +12,14 @@ export class OperatorComponent implements OnInit {
 
   operators = []
   selectedOperator: Operator;
+  @Input() importOp: Operator;
+  searchOp: string;
+  emptyOp: Operator;
 
-  constructor(private _backendService: BackendService) { }
+  constructor(
+    private _authService: AuthService,
+    private _backendService: BackendService
+    ) { }
 
   ngOnInit() {
     return this._backendService.getOperators()
@@ -22,7 +29,34 @@ export class OperatorComponent implements OnInit {
     )
   }
 
+  refreshOperators() {
+    return this._backendService.getOperators()
+    .subscribe(
+      res => this.operators = res,
+      err => console.log(err)
+    )
+  }
+
+  removeSelectedOp(): void {
+    this.selectedOperator = this.emptyOp;
+  }
+
   onSelect(operator:Operator) : void {
     this.selectedOperator = operator
+  }
+
+  isPopOp(operator: Operator) {
+    if (this.importOp === undefined) return true;
+    var listname = operator.name
+    var searchname = this.searchOp
+    console.log(listname + searchname)
+    if (listname.includes(searchname)) {
+      this.refreshOperators();
+      return true;
+      } else return false;
+  }
+
+  search() {
+    this.refreshOperators();
   }
 }

@@ -1,0 +1,11 @@
+<div class="login-page">
+  <div class="form">
+    <form class="login-form">
+        <h4>Delete a user:<br> <br></h4>
+      <input [(ngModel)]="deleteUserDataName" name="name" type="text" placeholder="username"/>
+      <input [(ngModel)]="deleteUserDataPass" name="password" type="password" placeholder="password"/>
+      <button (click)="deleteUser()" type="button" class="btn btn-danger">Confirm</button>
+    </form>
+    <a routerLink="/user" routerLinkActive="active" class="btn btn-primary mt-2">Return</a>
+  </div>
+</div>

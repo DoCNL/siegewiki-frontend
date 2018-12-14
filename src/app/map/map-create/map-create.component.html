@@ -1,0 +1,13 @@
+<div class="login-page">
+    <div class="form">
+      <form class="login-form">
+          <h4>Create a new map:<br> <br></h4>
+          <input [(ngModel)]="mapCreateData.name" name="name" type="text" placeholder="name"/>
+          <input [(ngModel)]="mapCreateData.description" name="description" type="text" placeholder="description"/>
+          <input [(ngModel)]="mapCreateData.imageLink" name="imageLink" type="text" placeholder="image link"/>
+          <input [(ngModel)]="mapCreateData.rankedAvailability" name="side" type="text" placeholder="ranked"/>
+          <button (click)="createMap()" type="button" class="btn btn-warning warningbutton">Confirm</button>
+      </form>
+      <a routerLink="/maps" routerLinkActive="active" class="btn btn-primary mt-2">Return</a>
+  </div>
+</div>

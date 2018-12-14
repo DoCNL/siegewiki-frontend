@@ -1,16 +1,23 @@
-<div class="row mt-5">
-  <div class="col-md-4 mb-3" *ngFor="let operator of operators">
-    <div class="card text-center">
-      <div class="card-body">
-        <h5 class="card-title">
-          {{operator.name}}
-        </h5>
-        <p class="card-text">
-          {{operator.side}}
-        </p>
-        <a (click)="onSelect(operator)" class="btn btn-primary">More info</a>
+<div class="col-md-6 mt-5 floatleft">
+  <app-operator-detail [operator]="selectedOperator"></app-operator-detail>
+</div>
+
+<div class="mt-5 floatright">
+  <a *ngIf="_authService.loggedIn()" routerLink='/operator/create' routerLinkActive="active" class="btn btn-primary">Create operator</a>
+  <!-- <input [(ngModel)]="searchOp" type="text" placeholder="Search"/>
+  <a (click)="search()" class="btn btn-primary">Search</a>
+  <p>{{ searchOp }}</p> -->
+  <div class="col-md-4" *ngFor="let operator of operators">
+    <div *ngIf="isPopOp(operator)">
+      <div class="login-page">
+        <div class="form">
+          <form class="login-form">
+            <h4>{{operator.name}}</h4>
+            <p>{{operator.side}}</p>
+            <a (click)="onSelect(operator)" class="btn btn-primary">More info</a>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<app-operator-detail [operator]="selectedOperator"></app-operator-detail>

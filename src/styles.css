@@ -1,22 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-.half-black {
-    background-color: grey;
+.header-grey {
+    background-color: #333333;
     border-radius: 25 px;
 }
+
 body {
-    /*background-image: url('frontendbackground.png');*/
+    background-position-x: 0px;
+    background-position-y: 50px;
     background-image: url('sledgebackground.jpg');
+    background-attachment: fixed;
     background-size: cover;
-}
-
-.createbutton {
-    width: 100%;
-}
-
-.deletebutton {
-    width: 50%;  
-}
-
-.editbutton {
-    width: 50%;
 }

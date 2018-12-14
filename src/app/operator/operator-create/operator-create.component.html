@@ -1,0 +1,13 @@
+<div class="login-page">
+    <div class="form">
+      <form class="login-form">
+          <h4>Create a new operator:<br> <br></h4>
+          <input [(ngModel)]="operatorCreateData.name" name="name" type="text" placeholder="username"/>
+          <input [(ngModel)]="operatorCreateData.description" name="description" type="text" placeholder="description"/>
+          <input [(ngModel)]="operatorCreateData.imageLink" name="imageLink" type="text" placeholder="image link"/>
+          <input [(ngModel)]="operatorCreateData.side" name="side" type="text" placeholder="side"/>
+          <button (click)="createOperator()" type="button" class="btn btn-warning warningbutton">Confirm</button>
+      </form>
+      <a routerLink="/operators" routerLinkActive="active" class="btn btn-primary mt-2">Return</a>
+  </div>
+</div>
