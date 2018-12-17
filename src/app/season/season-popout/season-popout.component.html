@@ -1,0 +1,23 @@
+<div class="offset" *ngIf="this.seasonById">
+  <div class="login-page">
+    <h4 class="cardtitle">map information</h4>
+    <hr />
+    <img [src]="seasonById.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+    <hr />
+    <p>
+      <br>
+      <b>Name:</b>
+      <br />
+      {{seasonById.name}}
+      <br />
+      <b>Description:</b>
+      <br />
+      {{seasonById.description}}
+      <br />
+      <b>Side:</b>
+      <br />
+      {{ seasonById.name }} can only be played as {{seasonById.side}}
+      <br />
+    </p>
+  </div>
+</div>

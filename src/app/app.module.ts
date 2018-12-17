@@ -29,6 +29,9 @@ import { SeasonDetailComponent } from './season/season-detail/season-detail.comp
 import { SeasonCreateComponent } from './season/season-create/season-create.component';
 import { SeasonEditComponent } from './season/season-edit/season-edit.component';
 import { SeasonPopulateComponent } from './season/season-populate/season-populate.component';
+import { OperatorPopoutComponent } from './operator/operator-popout/operator-popout.component';
+import { MapPopoutComponent } from './map/map-popout/map-popout.component';
+import { SeasonPopoutComponent } from './season/season-popout/season-popout.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { SeasonPopulateComponent } from './season/season-populate/season-populat
     SeasonDetailComponent,
     SeasonCreateComponent,
     SeasonEditComponent,
-    SeasonPopulateComponent
+    SeasonPopulateComponent,
+    OperatorPopoutComponent,
+    MapPopoutComponent,
+    SeasonPopoutComponent
   ],
   imports: [
     BrowserModule,

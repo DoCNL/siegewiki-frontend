@@ -1,68 +1,48 @@
-
-
-
 <div class="container">
   <div class="row">
     <div class="col-sm">
-    <div class="row rowpad" *ngFor="let season of seasons">
-      <div *ngIf="isDefault(season)" class="login-page">
-        <h4>{{season.name}}</h4>
-        <h5 class="card-title">
-          <img [src]="season.imageLink" alt="" style="max-width: 100%" class="img-rounded">
-        </h5>
-        <a (click)="onSelect(season)" class="btn btn-primary">More Info</a>
-        <br>
+      <div class="row rowpad" *ngFor="let season of seasons">
+        <div *ngIf="isDefault(season)" class="login-page">
+          <h4>{{season.name}}</h4>
+          <h5 class="card-title">
+            <img [src]="season.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+          </h5>
+          <a (click)="onSelect(season)" class="btn btn-primary">More Info</a>
+          <br>
+        </div>
       </div>
     </div>
-  </div>
-      <div class="col-sm rowpad ">
-        <div *ngIf="displayS">
-          <div class="login-page2">
-            <h4>{{seasonToShow.name}}</h4>
-            <br>
-            <p>{{seasonToShow.description}}</p>
-            <p>Released in year: {{seasonToShow.year}}</p>
-            <a *ngIf="seasonToShow.siegeoperator" (click)="onSelectOp(seasonToShow)" class="btn btn-primary">Operator</a>
-          </div>
+    <div class="col-sm rowpad ">
+      <div *ngIf="displayS">
+        <div class="login-page2">
+          <h4>{{seasonToShow.name}}</h4>
+          <br>
+          <p>{{seasonToShow.description}}</p>
+          <p>Released in year: {{seasonToShow.year}}</p>
+          <a *ngIf="seasonToShow.siegeoperator" (click)="findOpById(seasonToShow.siegeoperator)" class="btn btn-primary">Operator</a>
         </div>
+      </div>
 
-              <div *ngIf="display">
-                <div *ngFor="let operator of operators">
-                  <div class="login-page2 mt-5" *ngIf="seasonHas(operator)">
-                    <div class="container">
-                      <div class="row">
-                    <div class="col">
-                      <h4>{{operator.name}}</h4>
-                      <p>{{operator.description}}</p>
-                      <p>Available as: {{operator.side}}</p>
-                    </div>
-                    <div class="col">
-                        <img [src]="operator.imageLink" alt="" style="float:right; width: 150px;" class="img-rounded">
-                    </div>
-                  </div>
-                  </div>
+      <div *ngIf="operatorById">
+        <div *ngIf="display">
+          <div class="login-page2 mt-5">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <h4>{{operatorById.name}}</h4>
+                  <p>{{operatorById.description}}</p>
+                  <p>Available as: {{operatorById.side}}</p>
+                  <a *ngIf="_authService.loggedIn()" [routerLink]="['/operator', operatorById._id]" routerLinkActive="active"
+                    class="btn btn-primary">View</a>
                 </div>
+                <div class="col">
+                  <img [src]="operatorById.imageLink" alt="" style="float:right; width: 150px;" class="img-rounded">
                 </div>
               </div>
+            </div>
           </div>
-    </div>
-  </div>
-
-
-
-
-  <!-- <div *ngIf="display">
-      <div *ngFor="let operator of operators">
-        <div class="login-page2 mt-5" *ngIf="seasonHas(operator)">
-            <h4>{{operator.name}}</h4>
-            <h5 class="card-title">
-              <img [src]="operator.imageLink" alt="" style="max-width: 100%" class="img-rounded">
-            </h5>
-            <p>Description: {{operator.description}}</p>
-            <p>Available as: {{operator.side}}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-</div> -->

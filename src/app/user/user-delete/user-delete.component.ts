@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthGuard } from '../../auth.guard';
 import { BackendService } from '../../backend.service';
 import { AuthService } from '../../auth.service';
 
@@ -15,13 +14,11 @@ export class UserDeleteComponent implements OnInit {
   deleteUserDataPass: string;
 
   constructor(
-    private _authGuard: AuthGuard,
     private _backendService: BackendService,
     private _authService: AuthService) {
    }
 
   ngOnInit() {
-    this._authGuard.canActivate();
   }
 
   deleteUser() {

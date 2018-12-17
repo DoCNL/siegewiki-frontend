@@ -1,0 +1,23 @@
+<div class="offset" *ngIf="this.operatorById">
+  <div class="login-page">
+    <h4 class="cardtitle">operator information</h4>
+    <hr />
+    <img [src]="operatorById.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+    <hr />
+    <p>
+      <br>
+      <b>Name:</b>
+      <br />
+      {{operatorById.name}}
+      <br />
+      <b>Description:</b>
+      <br />
+      {{operatorById.description}}
+      <br />
+      <b>Side:</b>
+      <br />
+      {{ operatorById.name }} can only be played as {{operatorById.side}}
+      <br />
+    </p>
+  </div>
+</div>

@@ -16,6 +16,7 @@ export class OperatorDetailComponent implements OnInit {
   @Input() operator: Operator 
   selectedOperator: Operator;
   emptyOp: Operator;
+  
 
   constructor(
     private _backendService: BackendService,

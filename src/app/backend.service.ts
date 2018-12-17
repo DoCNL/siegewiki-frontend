@@ -60,6 +60,10 @@ export class BackendService {
         return this.http.get<any>(this._operatorUrl, httpOptions);
     }
 
+    getOperatorById(_id: any) {
+        return this.http.get<any>(this._operatorUrl + '' + _id);
+    }
+
     createOperator(operator: {}) {
         console.log(operator)
         return this.http.post<any>(this._operatorUrl, operator);
@@ -83,6 +87,11 @@ export class BackendService {
     //map http requests
     getMaps() {
         return this.http.get<any>(this._mapsUrl);
+    }
+
+    getMapById(_id: any) {
+        console.log(this._mapUrl + '' + _id)
+        return this.http.get<any>(this._mapUrl + '' + _id);
     }
 
     createMap(map: {}) {
@@ -112,6 +121,10 @@ export class BackendService {
 
     getSeasonsPop() {
         return this.http.get<any>(this._seasonsUrl  + 'populate');
+    }
+
+    getSeasonById(_id: any) {
+        return this.http.get<any>(this._seasonUrl + _id);
     }
 
     createSeason(season: {}) {
