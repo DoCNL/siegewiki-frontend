@@ -32,7 +32,7 @@
                   <h4>{{operatorById.name}}</h4>
                   <p>{{operatorById.description}}</p>
                   <p>Available as: {{operatorById.side}}</p>
-                  <a *ngIf="_authService.loggedIn()" [routerLink]="['/operator', operatorById._id]" routerLinkActive="active"
+                  <a [routerLink]="['/operator', operatorById._id]" routerLinkActive="active"
                     class="btn btn-primary">View</a>
                 </div>
                 <div class="col">
