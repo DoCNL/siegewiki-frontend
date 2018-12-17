@@ -33,6 +33,10 @@ export class MapDetailComponent implements OnInit {
     this.selectedMap = map
   }
 
+  testId(map:SiegeMap) : void {
+console.log(map);
+  }
+
   deleteMap() {
     this._backendService.deleteMap(this.map._id)
     .subscribe(

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../backend.service';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../auth.guard';
-import { Operator } from 'rxjs';
 import { Season } from '../season/season.model';
+import { Operator } from '../operator/operator.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
   seasonCreateData = {};
   maps = [];
   operators = [];
+  operatorById: Operator;
   seasons = [];
   operatorFromSeasonName: {};
   display: Boolean;
@@ -24,7 +26,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private _backendService: BackendService,
     private _router: Router,
-    private _authGuard: AuthGuard
+    private _authGuard: AuthGuard,
+    private _authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -69,16 +72,21 @@ export class HomeComponent implements OnInit {
     this.display = false;
   }
 
-  onSelectOp(season: Season) {
-    this.display = true;
-    this.operatorFromSeasonName = season.siegeoperator;
-  }
-
   seasonHas(operator: any) {
     if (operator.name === null || undefined) return false;
     if (operator._id == this.operatorFromSeasonName) return true;
     else return false;
   }
 
-
+  findOpById(op: any) {
+    return this._backendService.getOperatorById(op)
+      .subscribe(
+        res => {
+          this.display = true;
+          this.operatorById = res;
+          console.log(res);
+        },
+        err => console.log(err)
+      )
+  }
 }

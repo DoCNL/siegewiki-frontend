@@ -17,6 +17,10 @@ import { SeasonComponent } from './season/season.component';
 import { SeasonCreateComponent } from './season/season-create/season-create.component';
 import { SeasonEditComponent } from './season/season-edit/season-edit.component';
 import { SeasonPopulateComponent } from './season/season-populate/season-populate.component';
+import { OperatorPopoutComponent } from './operator/operator-popout/operator-popout.component';
+import { MapPopoutComponent } from './map/map-popout/map-popout.component';
+import { SeasonPopoutComponent } from './season/season-popout/season-popout.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   //default/home routes
@@ -48,11 +52,13 @@ const routes: Routes = [
   },
   {
     path:'user/edit',
-    component: UserEditComponent
+    component: UserEditComponent,
+    canActivate: [AuthGuard] 
   },
   {
     path:'user/delete',
-    component: UserDeleteComponent
+    component: UserDeleteComponent,
+    canActivate: [AuthGuard] 
   },
 
   //operator routes
@@ -61,8 +67,13 @@ const routes: Routes = [
     component: OperatorComponent
   },
   {
+    path:'operator/:id',
+    component: OperatorPopoutComponent
+  },
+  {
     path:'operator/create',
-    component: OperatorCreateComponent
+    component: OperatorCreateComponent,
+    canActivate: [AuthGuard] 
   },
   {
     path:'operator/edit',
@@ -75,8 +86,13 @@ const routes: Routes = [
     component: MapComponent
   },
   {
+    path:'map/:id',
+    component: MapPopoutComponent
+  },
+  {
     path:'map/create',
-    component: MapCreateComponent
+    component: MapCreateComponent,
+    canActivate: [AuthGuard] 
   },
   {
     path:'map/edit',
@@ -89,8 +105,13 @@ const routes: Routes = [
     component: SeasonComponent
   },
   {
+    path:'season/:id',
+    component: SeasonPopoutComponent
+  },
+  {
     path:'season/create',
-    component: SeasonCreateComponent
+    component: SeasonCreateComponent,
+    canActivate: [AuthGuard] 
   },
   {
     path:'season/edit',
@@ -98,7 +119,8 @@ const routes: Routes = [
   },
   {
     path:'season/populate',
-    component: SeasonPopulateComponent
+    component: SeasonPopulateComponent,
+    canActivate: [AuthGuard] 
   }
 ];
 

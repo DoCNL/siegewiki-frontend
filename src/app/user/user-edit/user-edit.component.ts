@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthGuard } from '../../auth.guard';
 import { BackendService } from '../../backend.service';
 
 @Component({
@@ -12,13 +11,10 @@ export class UserEditComponent implements OnInit {
   userEditData = {};
 
   constructor( 
-    private _authGuard: AuthGuard,
     private _backendService: BackendService
     ) { }
 
-  ngOnInit() {
-    this._authGuard.canActivate();
-  }
+  ngOnInit() {}
 
   displayEditName() {
     if (this.userEditData === {}) return false;

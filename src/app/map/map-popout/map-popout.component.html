@@ -1,0 +1,23 @@
+<div class="offset" *ngIf="this.siegeMapById">
+  <div class="login-page">
+    <h4 class="cardtitle">map information</h4>
+    <hr />
+    <img [src]="siegeMapById.imageLink" alt="" style="max-width: 100%" class="img-rounded">
+    <hr />
+    <p>
+      <br>
+      <b>Name:</b>
+      <br />
+      {{siegeMapById.name}}
+      <br />
+      <b>Description:</b>
+      <br />
+      {{siegeMapById.description}}
+      <br />
+      <b>Available in ranked:</b>
+      <br />
+      {{siegeMapById.rankedAvailability}}
+      <br />
+    </p>
+  </div>
+</div>

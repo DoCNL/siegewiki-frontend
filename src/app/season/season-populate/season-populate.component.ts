@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../backend.service';
 import { Router } from '@angular/router';
-import { AuthGuard } from '../../auth.guard';
 
 @Component({
   selector: 'app-season-populate',
@@ -17,12 +16,10 @@ export class SeasonPopulateComponent implements OnInit {
 
   constructor(
     private _backendService: BackendService,
-    private _router: Router,
-    private _authGuard: AuthGuard
+    private _router: Router
   ) { }
 
   ngOnInit() {
-    this._authGuard.canActivate();
     return this._backendService.getOperators()
     .subscribe(
       res => this.operators = res,
