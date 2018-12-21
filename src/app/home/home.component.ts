@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../backend.service';
 import { Router } from '@angular/router';
-import { AuthGuard } from '../auth.guard';
 import { Season } from '../season/season.model';
 import { Operator } from '../operator/operator.model';
 import { AuthService } from '../auth.service';
@@ -26,14 +25,12 @@ export class HomeComponent implements OnInit {
   constructor(
     private _backendService: BackendService,
     private _router: Router,
-    private _authGuard: AuthGuard,
     private _authService: AuthService
   ) { }
 
   ngOnInit() {
     this.display = false;
     this.displayS = false;
-    //this._authGuard.canActivate();
     return this._backendService.getOperators()
       .subscribe(
         res => this.operators = res,
