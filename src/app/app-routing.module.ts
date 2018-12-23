@@ -36,7 +36,8 @@ const routes: Routes = [
   //user routes
   {
     path:'user',
-    component: UserComponent
+    component: UserComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path:'login',
@@ -53,12 +54,12 @@ const routes: Routes = [
   {
     path:'user/edit',
     component: UserEditComponent,
-    canActivate: [AuthGuard] 
+    //canActivate: [AuthGuard] 
   },
   {
     path:'user/delete',
-    component: UserDeleteComponent,
-    canActivate: [AuthGuard] 
+    component: UserDeleteComponent//,
+    //canActivate: [AuthGuard] 
   },
 
   //operator routes
@@ -72,8 +73,8 @@ const routes: Routes = [
   },
   {
     path:'operator/create',
-    component: OperatorCreateComponent,
-    canActivate: [AuthGuard] 
+    component: OperatorCreateComponent//,
+    //canActivate: [AuthGuard] 
   },
   {
     path:'operator/edit',
@@ -91,8 +92,8 @@ const routes: Routes = [
   },
   {
     path:'map/create',
-    component: MapCreateComponent,
-    canActivate: [AuthGuard] 
+    component: MapCreateComponent//,
+    //canActivate: [AuthGuard] 
   },
   {
     path:'map/edit',
@@ -110,8 +111,8 @@ const routes: Routes = [
   },
   {
     path:'season/create',
-    component: SeasonCreateComponent,
-    canActivate: [AuthGuard] 
+    component: SeasonCreateComponent//,
+    //canActivate: [AuthGuard] 
   },
   {
     path:'season/edit',
@@ -119,8 +120,8 @@ const routes: Routes = [
   },
   {
     path:'season/populate',
-    component: SeasonPopulateComponent,
-    canActivate: [AuthGuard] 
+    component: SeasonPopulateComponent//,
+    ////canActivate: [AuthGuard] 
   }
 ];
 
