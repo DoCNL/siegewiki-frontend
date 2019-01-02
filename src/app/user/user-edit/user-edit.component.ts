@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../backend.service';
 import { AuthGuard } from '../../auth.guard';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -12,7 +12,7 @@ export class UserEditComponent implements OnInit {
   userEditData = {};
 
   constructor( 
-    private _backendService: BackendService,
+    private _userService: UserService,
     private _authGuard: AuthGuard
     ) { }
 
@@ -27,7 +27,7 @@ export class UserEditComponent implements OnInit {
 
   editUser() {
     //console.log(this.userEditData)
-    this._backendService.editUser(this.userEditData)
+    this._userService.editUser(this.userEditData)
     .subscribe(
       res => console.log(res),
       err => console.log(err)

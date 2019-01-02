@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../backend.service';
+import { MapService } from '../../map.service';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../../auth.guard';
 
@@ -15,7 +15,7 @@ export class MapCreateComponent implements OnInit {
   showResultBox;
 
   constructor(
-    private _backendService: BackendService,
+    private _mapService: MapService,
     private _router: Router,
     private _authGuard: AuthGuard
   ) { }
@@ -26,7 +26,7 @@ export class MapCreateComponent implements OnInit {
   }
 
   createMap() {
-    this._backendService.createMap(this.mapCreateData)
+    this._mapService.createMap(this.mapCreateData)
       .subscribe(
         res => {
           console.log(res)

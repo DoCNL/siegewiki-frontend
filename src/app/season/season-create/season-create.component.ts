@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../backend.service';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../../auth.guard';
+import { SeasonService } from 'src/app/season.service';
 
 @Component({
   selector: 'app-season-create',
@@ -15,7 +15,7 @@ export class SeasonCreateComponent implements OnInit {
   showResultBox;
 
   constructor(
-    private _backendService: BackendService,
+    private _seasonService: SeasonService,
     private _router: Router,
     private _authGuard: AuthGuard
   ) { }
@@ -26,7 +26,7 @@ export class SeasonCreateComponent implements OnInit {
   }
 
   createSeason() {
-    this._backendService.createSeason(this.seasonCreateData)
+    this._seasonService.createSeason(this.seasonCreateData)
       .subscribe(
         res => {
           console.log(res)

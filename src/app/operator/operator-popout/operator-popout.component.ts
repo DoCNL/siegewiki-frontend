@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Operator } from '../operator.model';
-import { BackendService } from '../../backend.service';
+import { OperatorService } from 'src/app/operator.service';
 
 @Component({
   selector: 'app-operator-popout',
@@ -16,12 +16,13 @@ export class OperatorPopoutComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private _backendService: BackendService) { }
+    private _operatorService: OperatorService
+    ) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       console.log(params['id']);
-      return this._backendService.getOperatorById(params.id)
+      return this._operatorService.getOperatorById(params.id)
         .subscribe(
           res => {
             this.operatorById = res;

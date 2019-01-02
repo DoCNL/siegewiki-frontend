@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../backend.service';
+import { MapService } from '../map.service';
+import { OperatorService } from '../operator.service';
+import { SeasonService } from '../season.service';
 import { Router } from '@angular/router';
 import { Season } from '../season/season.model';
 import { Operator } from '../operator/operator.model';
@@ -23,7 +25,9 @@ export class HomeComponent implements OnInit {
   seasonToShow: Season;
 
   constructor(
-    private _backendService: BackendService,
+    private _operatorService: OperatorService,
+    private _mapService: MapService,
+    private _seasonService: SeasonService,
     private _router: Router,
     private _authService: AuthService
   ) { }
@@ -31,17 +35,17 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.display = false;
     this.displayS = false;
-    return this._backendService.getOperators()
+    return this._operatorService.getOperators()
       .subscribe(
         res => this.operators = res,
         err => console.log(err)
       ),
-      this._backendService.getMaps()
+      this._mapService.getMaps()
         .subscribe(
           res => this.maps = res,
           err => console.log(err)
         ),
-      this._backendService.getSeasons()
+      this._seasonService.getSeasons()
         .subscribe(
           res => this.seasons = res,
           err => console.log(err)
@@ -49,7 +53,7 @@ export class HomeComponent implements OnInit {
   }
 
   populateSeason() {
-    this._backendService.populateSeason(this.seasonCreateData)
+    this._seasonService.populateSeason(this.seasonCreateData)
       .subscribe(
         res => {
           console.log(res)
@@ -76,7 +80,7 @@ export class HomeComponent implements OnInit {
   }
 
   findOpById(op: any) {
-    return this._backendService.getOperatorById(op)
+    return this._operatorService.getOperatorById(op)
       .subscribe(
         res => {
           this.display = true;

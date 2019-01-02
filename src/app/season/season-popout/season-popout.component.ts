@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Season } from '../season.model';
-import { BackendService } from '../../backend.service';
+import { SeasonService } from 'src/app/season.service';
 
 @Component({
   selector: 'app-season-popout',
@@ -10,31 +10,31 @@ import { BackendService } from '../../backend.service';
 })
 export class SeasonPopoutComponent implements OnInit {
 
-  @Input() season: Season 
+  @Input() season: Season
   seasonById: Season;
   private sub: any;
 
   constructor(
     private route: ActivatedRoute,
-    private _backendService: BackendService) { }
+    private _seasonService: SeasonService
+  ) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       console.log(params['id']);
-    return this._backendService.getSeasonById(params.id)
-      .subscribe(
-        res => {
-        this.seasonById = res;
-        console.log('res:')
-        console.log(res);
-        },
-        err => console.log(err)
-      )
-  })
+      return this._seasonService.getSeasonById(params.id)
+        .subscribe(
+          res => {
+            this.seasonById = res;
+            console.log('res:')
+            console.log(res);
+          },
+          err => console.log(err)
+        )
+    })
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-
 }

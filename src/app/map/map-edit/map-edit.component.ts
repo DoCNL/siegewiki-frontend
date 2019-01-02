@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SiegeMap } from '../map.model';
-import { BackendService } from '../../backend.service';
+import { MapService } from '../../map.service';
 import { MapComponent } from '../map.component';
 import { AuthService } from 'src/app/auth.service';
 import { MapDetailComponent } from '../map-detail/map-detail.component';
@@ -22,7 +22,7 @@ export class MapEditComponent implements OnInit {
   showResultBox;
   
   constructor(
-    private _backendService: BackendService,
+    private _mapService: MapService,
     private _mapComp: MapComponent,
     private _authService: AuthService,
     private _mapDetailComp: MapDetailComponent
@@ -35,7 +35,7 @@ export class MapEditComponent implements OnInit {
   editMap() {
     if (this._authService.loggedIn) {
     this.mapEdit = new SiegeMap( this.map._id, this.mapNewName, this.mapNewDesc, this.mapNewImg, this.mapNewAv)
-    this._backendService.editMap(this.mapEdit)
+    this._mapService.editMap(this.mapEdit)
     .subscribe(
       res => {
         this._mapComp.refreshMaps();

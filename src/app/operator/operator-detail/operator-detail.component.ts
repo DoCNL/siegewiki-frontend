@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BackendService } from '../../backend.service';
 import { Operator } from '../operator.model';
 import { Router } from '@angular/router';
 import { OperatorComponent } from '../operator.component';
 import { AuthService } from '../../auth.service';
+import { OperatorService } from 'src/app/operator.service';
 
 @Component({
   selector: 'app-operator-detail',
@@ -19,7 +19,7 @@ export class OperatorDetailComponent implements OnInit {
   
 
   constructor(
-    private _backendService: BackendService,
+    private _operatorService: OperatorService,
     private _router: Router,
     private _operatorComp: OperatorComponent,
     private _authService: AuthService
@@ -37,7 +37,7 @@ export class OperatorDetailComponent implements OnInit {
   }
   
   deleteOperator() {
-    this._backendService.deleteOperator(this.operator._id)
+    this._operatorService.deleteOperator(this.operator._id)
     .subscribe(
       res => {
         this._operatorComp.refreshOperators();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../backend.service';
 import { SiegeMap } from './map.model';
 import { AuthService } from '../auth.service';
+import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-map',
@@ -16,11 +16,11 @@ export class MapComponent implements OnInit {
 
   constructor(
     private _authService: AuthService,
-    private _backendService: BackendService
+    private _mapService: MapService
     ) { }
 
   ngOnInit() {
-    return this._backendService.getMaps()
+    return this._mapService.getMaps()
     .subscribe(
       res => this.siegemaps = res,
       err => console.log(err)
@@ -32,7 +32,7 @@ export class MapComponent implements OnInit {
   }
 
   refreshMaps() {
-    return this._backendService.getMaps()
+    return this._mapService.getMaps()
     .subscribe(
       res => this.siegemaps = res,
       err => console.log(err)

@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Season } from '../season.model';
-import { BackendService } from '../../backend.service';
 import { SeasonComponent } from '../season.component';
 import { AuthService } from 'src/app/auth.service';
 import { SeasonDetailComponent } from '../season-detail/season-detail.component';
+import { SeasonService } from 'src/app/season.service';
 
 @Component({
   selector: 'app-season-edit',
@@ -22,7 +22,7 @@ export class SeasonEditComponent implements OnInit {
   showResultBox;
 
   constructor(
-    private _backendService: BackendService,
+    private _seasonService: SeasonService,
     private _seasonComp: SeasonComponent,
     private _authService: AuthService,
     private _seasonDetailComp: SeasonDetailComponent
@@ -35,7 +35,7 @@ export class SeasonEditComponent implements OnInit {
   editSeason() {
     if (this._authService.loggedIn) {
       this.seasonEdit = new Season(this.season._id, this.seasonNewName, this.seasonNewDesc, this.seasonNewImg, this.seasonNewYear)
-      this._backendService.editSeason(this.seasonEdit)
+      this._seasonService.editSeason(this.seasonEdit)
         .subscribe(
           res => {
             this._seasonComp.refreshSeasons();

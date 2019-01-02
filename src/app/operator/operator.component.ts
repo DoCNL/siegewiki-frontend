@@ -1,7 +1,7 @@
 import { Component, OnInit,  Input} from '@angular/core';
-import { BackendService } from '../backend.service';
 import { Operator } from './operator.model';
 import { AuthService } from '../auth.service';
+import { OperatorService } from '../operator.service';
 
 @Component({
   selector: 'app-operator',
@@ -18,11 +18,11 @@ export class OperatorComponent implements OnInit {
 
   constructor(
     private _authService: AuthService,
-    private _backendService: BackendService
+    private _operatorService: OperatorService
     ) { }
 
   ngOnInit() {
-    return this._backendService.getOperators()
+    return this._operatorService.getOperators()
     .subscribe(
       res => this.operators = res,
       err => console.log(err)
@@ -30,7 +30,7 @@ export class OperatorComponent implements OnInit {
   }
 
   refreshOperators() {
-    return this._backendService.getOperators()
+    return this._operatorService.getOperators()
     .subscribe(
       res => this.operators = res,
       err => console.log(err)

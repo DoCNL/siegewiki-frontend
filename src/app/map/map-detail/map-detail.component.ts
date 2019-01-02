@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BackendService } from '../../backend.service';
+import { MapService } from '../../map.service';
 import { SiegeMap } from '../map.model';
 import { Router } from '@angular/router';
 import { MapComponent } from '../map.component';
@@ -19,8 +19,7 @@ export class MapDetailComponent implements OnInit {
   showResultBox;
 
   constructor(
-    private _backendService: BackendService,
-    private _router: Router,
+    private _mapService: MapService,
     private _mapComp: MapComponent,
     private _authService: AuthService
   ) { }
@@ -38,7 +37,7 @@ console.log(map);
   }
 
   deleteMap() {
-    this._backendService.deleteMap(this.map._id)
+    this._mapService.deleteMap(this.map._id)
     .subscribe(
       res => {
         this._mapComp.refreshMaps();

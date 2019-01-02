@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../backend.service';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../../auth.guard';
+import { SeasonService } from 'src/app/season.service';
+import { OperatorService } from 'src/app/operator.service';
+import { MapService } from 'src/app/map.service';
 
 @Component({
   selector: 'app-season-populate',
@@ -16,24 +18,26 @@ export class SeasonPopulateComponent implements OnInit {
   seasons = [];
 
   constructor(
-    private _backendService: BackendService,
+    private _seasonService: SeasonService,
+    private _operatorService: OperatorService,
+    private _mapService: MapService,
     private _router: Router,
     private _authGuard: AuthGuard
   ) { }
 
   ngOnInit() {
     this._authGuard.canActivate;
-    return this._backendService.getOperators()
+    return this._operatorService.getOperators()
     .subscribe(
       res => this.operators = res,
       err => console.log(err)
     ),
-    this._backendService.getMaps()
+    this._mapService.getMaps()
     .subscribe(
       res => this.maps = res,
       err => console.log(err)
   ),
-this._backendService.getSeasons()
+this._seasonService.getSeasons()
 .subscribe(
   res => this.seasons = res,
   err => console.log(err)
@@ -41,7 +45,7 @@ this._backendService.getSeasons()
   }
 
   populateSeason() {
-    this._backendService.populateSeason(this.seasonCreateData)
+    this._seasonService.populateSeason(this.seasonCreateData)
       .subscribe(
         res => {
           console.log(res)

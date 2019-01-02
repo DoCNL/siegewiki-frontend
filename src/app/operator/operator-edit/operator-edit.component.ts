@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Operator } from '../operator.model';
-import { BackendService } from '../../backend.service';
 import { OperatorComponent } from '../operator.component';
 import { OperatorDetailComponent } from '../operator-detail/operator-detail.component';
 import { AuthService } from 'src/app/auth.service';
+import { OperatorService } from 'src/app/operator.service';
 
 @Component({
   selector: 'app-operator-edit',
@@ -20,7 +20,7 @@ export class OperatorEditComponent implements OnInit {
   operatorNewSide = '';
 
   constructor(
-    private _backendService: BackendService,
+    private _operatorService: OperatorService,
     private _operatorComp: OperatorComponent,
     private _authService: AuthService,
     private _opDetailComp: OperatorDetailComponent
@@ -32,7 +32,7 @@ export class OperatorEditComponent implements OnInit {
   editOperator() {
   if (this._authService.loggedIn) {
   this.operatorEdit = new Operator( this.operator._id, this.operatorNewName, this.operatorNewDesc, this.operatorNewImg, this.operatorNewSide)
-  this._backendService.editOperator(this.operatorEdit)
+  this._operatorService.editOperator(this.operatorEdit)
   .subscribe(
     res => {
       this._operatorComp.refreshOperators();

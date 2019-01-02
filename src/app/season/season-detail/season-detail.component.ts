@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BackendService } from '../../backend.service';
 import { Season } from '../season.model';
 import { Router } from '@angular/router';
 import { SeasonComponent } from '../season.component';
 import { AuthService } from '../../auth.service';
+import { SeasonService } from 'src/app/season.service';
 
 @Component({
   selector: 'app-season-detail',
@@ -19,7 +19,7 @@ export class SeasonDetailComponent implements OnInit {
   showResultBox;
 
   constructor(
-    private _backendService: BackendService,
+    private _seasonService: SeasonService,
     private _router: Router,
     private _seasonComp: SeasonComponent,
     private _authService: AuthService
@@ -37,7 +37,7 @@ export class SeasonDetailComponent implements OnInit {
   }
 
   deleteSeason() {
-    this._backendService.deleteSeason(this.season._id)
+    this._seasonService.deleteSeason(this.season._id)
     .subscribe(
       res => {
         this._seasonComp.refreshSeasons();

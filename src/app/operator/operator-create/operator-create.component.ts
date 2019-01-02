@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../backend.service';
+import { OperatorService } from '../../operator.service';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../../auth.guard';
 
@@ -15,7 +15,7 @@ export class OperatorCreateComponent implements OnInit {
   showResultBox;
 
   constructor(
-    private _backendService: BackendService,
+    private _operatorService: OperatorService,
     private _router: Router,
     private _authGuard: AuthGuard
   ) { }
@@ -26,7 +26,7 @@ export class OperatorCreateComponent implements OnInit {
   }
 
   createOperator() {
-      this._backendService.createOperator(this.operatorCreateData)
+      this._operatorService.createOperator(this.operatorCreateData)
         .subscribe(
           res => {
             console.log(res)

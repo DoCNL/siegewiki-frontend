@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../backend.service';
 import { Season } from './season.model';
 import { AuthService } from '../auth.service';
+import { SeasonService } from '../season.service';
 
 @Component({
   selector: 'app-season',
@@ -16,11 +16,11 @@ export class SeasonComponent implements OnInit {
   
   constructor(
     private _authService: AuthService,
-    private _backendService: BackendService
+    private _seasonService: SeasonService
   ) { }
 
   ngOnInit() {
-    return this._backendService.getSeasons()
+    return this._seasonService.getSeasons()
     .subscribe(
       res => {
         console.log(res)
@@ -30,7 +30,7 @@ export class SeasonComponent implements OnInit {
   }
 
   refreshSeasons() {
-    return this._backendService.getSeasons()
+    return this._seasonService.getSeasons()
     .subscribe(
       res => this.seasons = res,
       err => console.log(err)

@@ -32,6 +32,10 @@ import { SeasonPopulateComponent } from './season/season-populate/season-populat
 import { OperatorPopoutComponent } from './operator/operator-popout/operator-popout.component';
 import { MapPopoutComponent } from './map/map-popout/map-popout.component';
 import { SeasonPopoutComponent } from './season/season-popout/season-popout.component';
+import { OperatorService } from './operator.service';
+import { MapService } from './map.service';
+import { SeasonService } from './season.service';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +72,7 @@ import { SeasonPopoutComponent } from './season/season-popout/season-popout.comp
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [BackendService, AuthGuard, AuthService, 
+  providers: [BackendService, AuthGuard, AuthService, OperatorService, SeasonService, MapService, UserService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
