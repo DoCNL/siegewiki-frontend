@@ -10,7 +10,7 @@ import { BackendService } from '../../backend.service';
 })
 export class OperatorPopoutComponent implements OnInit {
 
-  @Input() operator: Operator 
+  @Input() operator: Operator
   operatorById: Operator;
   private sub: any;
 
@@ -21,21 +21,19 @@ export class OperatorPopoutComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       console.log(params['id']);
-    return this._backendService.getOperatorById(params.id)
-      .subscribe(
-        res => {
-        this.operatorById = res;
-        console.log('res:')
-        console.log(res);
-        },
-        err => console.log(err)
-      )
-  })
-}
+      return this._backendService.getOperatorById(params.id)
+        .subscribe(
+          res => {
+            this.operatorById = res;
+            console.log('res:')
+            console.log(res);
+          },
+          err => console.log(err)
+        )
+    })
+  }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-
-
 }

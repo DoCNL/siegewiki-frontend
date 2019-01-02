@@ -20,10 +20,9 @@ import { SeasonPopulateComponent } from './season/season-populate/season-populat
 import { OperatorPopoutComponent } from './operator/operator-popout/operator-popout.component';
 import { MapPopoutComponent } from './map/map-popout/map-popout.component';
 import { SeasonPopoutComponent } from './season/season-popout/season-popout.component';
-import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  //default/home routes
+  //home routes
   {
     path:'',
     component: HomeComponent
@@ -36,8 +35,7 @@ const routes: Routes = [
   //user routes
   {
     path:'user',
-    component: UserComponent//,
-    //canActivate: [AuthGuard]
+    component: UserComponent
   },
   {
     path:'login',
@@ -53,13 +51,11 @@ const routes: Routes = [
   },
   {
     path:'user/edit',
-    component: UserEditComponent,
-    //canActivate: [AuthGuard] 
+    component: UserEditComponent
   },
   {
     path:'user/delete',
-    component: UserDeleteComponent//,
-    //canActivate: [AuthGuard] 
+    component: UserDeleteComponent
   },
 
   //operator routes
@@ -73,8 +69,7 @@ const routes: Routes = [
   },
   {
     path:'operator/create',
-    component: OperatorCreateComponent//,
-    //canActivate: [AuthGuard] 
+    component: OperatorCreateComponent
   },
   {
     path:'operator/edit',
@@ -92,8 +87,7 @@ const routes: Routes = [
   },
   {
     path:'map/create',
-    component: MapCreateComponent//,
-    //canActivate: [AuthGuard] 
+    component: MapCreateComponent
   },
   {
     path:'map/edit',
@@ -111,8 +105,7 @@ const routes: Routes = [
   },
   {
     path:'season/create',
-    component: SeasonCreateComponent//,
-    //canActivate: [AuthGuard] 
+    component: SeasonCreateComponent
   },
   {
     path:'season/edit',
@@ -120,8 +113,7 @@ const routes: Routes = [
   },
   {
     path:'season/populate',
-    component: SeasonPopulateComponent//,
-    ////canActivate: [AuthGuard] 
+    component: SeasonPopulateComponent
   }
 ];
 

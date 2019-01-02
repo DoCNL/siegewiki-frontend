@@ -11,7 +11,7 @@ import { environment } from '../environments/environment';
 
 export class BackendService {
     
-    //user urls
+    //user url
     public _userUrl = environment.serverUrl + "/api/user/";
 
     //operator urls

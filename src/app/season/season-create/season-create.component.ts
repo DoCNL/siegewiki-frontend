@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../backend.service';
 import { Router } from '@angular/router';
+import { AuthGuard } from '../../auth.guard';
 
 @Component({
   selector: 'app-season-create',
@@ -15,10 +16,12 @@ export class SeasonCreateComponent implements OnInit {
 
   constructor(
     private _backendService: BackendService,
-    private _router: Router
+    private _router: Router,
+    private _authGuard: AuthGuard
   ) { }
 
   ngOnInit() {
+    this._authGuard.canActivate;
     this.showResultBox = false;
   }
 
