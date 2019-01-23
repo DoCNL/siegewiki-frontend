@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Season } from '../season.model';
 import { SeasonComponent } from '../season.component';
 import { AuthService } from 'src/app/auth.service';
@@ -7,13 +7,13 @@ import { SeasonService } from 'src/app/season.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-season-edit',
-  templateUrl: './season-edit.component.html',
-  styleUrls: ['./season-edit.component.css']
+  selector: 'app-season-edit-richard',
+  templateUrl: './season-edit-richard.component.html',
+  styleUrls: ['./season-edit-richard.component.css']
 })
-export class SeasonEditComponent implements OnInit {
+export class SeasonEditRichardComponent implements OnInit {
 
- @Input() season: Season;
+  season: Season;
   seasonEdit;
   seasonNewName = '';
   seasonNewDesc = '';
@@ -26,14 +26,25 @@ export class SeasonEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private _seasonService: SeasonService,
-    private _seasonComp: SeasonComponent,
-    private _authService: AuthService,
-    private _seasonDetailComp: SeasonDetailComponent
+    private _authService: AuthService
   ) { }
 
   ngOnInit() {
     this.showResultBox = false;
+    this.sub = this.route.params.subscribe(params => {
+      console.log(params['id']);
+      return this._seasonService.getSeasonById(params.id)
+        .subscribe(
+          res => {
+            this.season = res;
+            console.log('res:')
+            console.log(res);
+          },
+          err => console.log(err)
+        )
+    })
   }
+
 
   editSeason() {
     if (this._authService.loggedIn) {
@@ -42,10 +53,6 @@ export class SeasonEditComponent implements OnInit {
         this._seasonService.editSeason(this.seasonEdit)
           .subscribe(
             res => {
-              this._seasonComp.refreshSeasons();
-              console.log(res)
-              this.cancel();
-              this._seasonComp.removeSelectedSeason();
               this.displayresult = {
                 result: "success",
                 message: "Season " + this.season.name + " was edited succesfully"
@@ -63,14 +70,6 @@ export class SeasonEditComponent implements OnInit {
           )
       });
     }
-  }
-
-  refresh() {
-    this._seasonComp.refreshSeasons();
-  }
-
-  cancel() {
-    this._seasonDetailComp.removeSelectedSeason();
   }
 
   showResult() {

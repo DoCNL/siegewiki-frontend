@@ -25,8 +25,8 @@ export class UserService {
         return this.http.delete<any>(this._userUrl, httpOptions);
     }
 
-    editUser(user: {}) {
+    editUser(name: any, user: {name: any}) {
         console.log(user)
-        return this.http.put<any>(this._userUrl, user);
+        return this.http.put<any>(this._userUrl + user.name, user);
     }
 }

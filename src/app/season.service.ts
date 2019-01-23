@@ -32,23 +32,17 @@ export class SeasonService {
         return this.http.post<any>(this._seasonUrl, season);
     }
 
-    editSeason(season: {}) {
+    editSeason(season: any) {
         console.log(season)
-        return this.http.put<any>(this._seasonUrl, season);
+        return this.http.put<any>(this._seasonUrl + season._id, season);
     }
 
     deleteSeason(_id: any) {
-        const httpOptions = {
-            headers: new HttpHeaders({
-              'Content-Type':  'application/json',
-              '_id': _id
-            })
-          };
-        return this.http.delete<any>(this._seasonUrl, httpOptions );
+        return this.http.delete<any>(this._seasonUrl + _id );
     }
 
     populateSeason(season: any) {
         console.log(season)
-        return this.http.put<any>(this._seasonUrl + 'populate/', season);
+        return this.http.put<any>(this._seasonUrl + 'populate/' + season._id, season);
     }
 }

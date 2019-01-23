@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Season } from '../season.model';
 import { SeasonService } from 'src/app/season.service';
 
@@ -13,9 +13,11 @@ export class SeasonPopoutComponent implements OnInit {
   @Input() season: Season
   seasonById: Season;
   private sub: any;
+  selectedSeason: Season;
 
   constructor(
     private route: ActivatedRoute,
+    private _router: Router,
     private _seasonService: SeasonService
   ) { }
 

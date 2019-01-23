@@ -36,6 +36,8 @@ import { OperatorService } from './operator.service';
 import { MapService } from './map.service';
 import { SeasonService } from './season.service';
 import { UserService } from './user.service';
+import { SeasonEditRichardComponent } from './season/season-edit-richard/season-edit-richard.component';
+import { SeasonDeleteComponent } from './season/season-delete/season-delete.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { UserService } from './user.service';
     SeasonPopulateComponent,
     OperatorPopoutComponent,
     MapPopoutComponent,
-    SeasonPopoutComponent
+    SeasonPopoutComponent,
+    SeasonEditRichardComponent,
+    SeasonDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,7 @@ import { UserService } from './user.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [BackendService, AuthGuard, AuthService, OperatorService, SeasonService, MapService, UserService,
+  providers: [HttpClientModule, BackendService, AuthGuard, AuthService, OperatorService, SeasonService, MapService, UserService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,

@@ -20,6 +20,9 @@ import { SeasonPopulateComponent } from './season/season-populate/season-populat
 import { OperatorPopoutComponent } from './operator/operator-popout/operator-popout.component';
 import { MapPopoutComponent } from './map/map-popout/map-popout.component';
 import { SeasonPopoutComponent } from './season/season-popout/season-popout.component';
+import { SeasonEditRichardComponent } from './season/season-edit-richard/season-edit-richard.component';
+import { SeasonDeleteComponent } from './season/season-delete/season-delete.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   //home routes
@@ -50,13 +53,39 @@ const routes: Routes = [
     component: UserSignupComponent
   },
   {
-    path:'user/edit',
+    path:'user/:name',
     component: UserEditComponent
   },
   {
-    path:'user/delete',
+    path:'user/delete/:name',
     component: UserDeleteComponent
   },
+
+    //Season routes
+    {
+      path:'seasons',
+      component: SeasonComponent
+    },
+    {
+      path:'season/:id',
+      component: SeasonPopoutComponent
+    },
+    {
+      path:'season/create/:id',
+      component: SeasonCreateComponent
+    },
+    {
+      path:'season/edit/:id',
+      component: SeasonEditRichardComponent
+    },
+    {
+      path:'season/populate/:id',
+      component: SeasonPopulateComponent
+    },
+        {
+      path:'season/delete/:id',
+      component: SeasonDeleteComponent
+    },
 
   //operator routes
   {
@@ -92,28 +121,6 @@ const routes: Routes = [
   {
     path:'map/edit',
     component: MapEditComponent
-  },
-
-  //Season routes
-  {
-    path:'seasons',
-    component: SeasonComponent
-  },
-  {
-    path:'season/:id',
-    component: SeasonPopoutComponent
-  },
-  {
-    path:'season/create',
-    component: SeasonCreateComponent
-  },
-  {
-    path:'season/edit',
-    component: SeasonEditComponent
-  },
-  {
-    path:'season/populate',
-    component: SeasonPopulateComponent
   }
 ];
 
