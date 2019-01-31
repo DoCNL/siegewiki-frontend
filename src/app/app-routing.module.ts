@@ -14,7 +14,6 @@ import { MapEditComponent } from './map/map-edit/map-edit.component';
 import { MapCreateComponent } from './map/map-create/map-create.component';
 import { MapComponent } from './map/map.component';
 import { SeasonComponent } from './season/season.component';
-import { SeasonCreateComponent } from './season/season-create/season-create.component';
 import { SeasonEditComponent } from './season/season-edit/season-edit.component';
 import { SeasonPopulateComponent } from './season/season-populate/season-populate.component';
 import { OperatorPopoutComponent } from './operator/operator-popout/operator-popout.component';
@@ -23,6 +22,7 @@ import { SeasonPopoutComponent } from './season/season-popout/season-popout.comp
 import { SeasonEditRichardComponent } from './season/season-edit-richard/season-edit-richard.component';
 import { SeasonDeleteComponent } from './season/season-delete/season-delete.component';
 import { AuthGuard } from './auth.guard';
+import { SeasonCreateformComponent } from './season/season-createform/season-createform.component';
 
 const routes: Routes = [
   //home routes
@@ -71,8 +71,8 @@ const routes: Routes = [
       component: SeasonPopoutComponent
     },
     {
-      path:'season/create/:id',
-      component: SeasonCreateComponent
+      path: 'season/create/:id',
+      component: SeasonCreateformComponent
     },
     {
       path:'season/edit/:id',
@@ -97,7 +97,7 @@ const routes: Routes = [
     component: OperatorPopoutComponent
   },
   {
-    path:'operator/create',
+    path:'operator/create/:id',
     component: OperatorCreateComponent
   },
   {
@@ -115,7 +115,7 @@ const routes: Routes = [
     component: MapPopoutComponent
   },
   {
-    path:'map/create',
+    path:'map/create/:id',
     component: MapCreateComponent
   },
   {

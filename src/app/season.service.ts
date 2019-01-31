@@ -32,9 +32,9 @@ export class SeasonService {
         return this.http.post<any>(this._seasonUrl, season);
     }
 
-    editSeason(season: any) {
+    editSeason(season: any, _id: any) {
         console.log(season)
-        return this.http.put<any>(this._seasonUrl + season._id, season);
+        return this.http.put<any>(this._seasonUrl + _id, season);
     }
 
     deleteSeason(_id: any) {

@@ -1,4 +1,35 @@
-<div *ngIf="season">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 mt-5">
+            <form [formGroup]="myForm">
+                <h4 style="color: white">Edit season</h4>
+                <!-- <p style="color: white;">Only fill in fields you want to edit.</p> -->
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="name" formControlName="name">
+                </mat-form-field>
+                <hr>
+                <mat-form-field appearance="outline">
+                    <textarea matInput placeholder="description" formControlName="description"></textarea>
+                </mat-form-field>
+                <hr>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="imageLink" formControlName="imageLink">
+                </mat-form-field>
+                <hr>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="year" formControlName="year">
+                    <mat-error *ngIf="year.invalid">{{validateYear()}}</mat-error>
+                  </mat-form-field>
+                <hr>
+                <button mat-raised-button [disabled]="myForm.invalid" class="btn btn-primary" (click)="editSeason()">Submit</button>
+                <br>
+                <label>{{submitResult}}</label>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <div *ngIf="season">
   <div class="content login-page form login-form">
     <h5 class="card-title">Edit season: {{season.name}}</h5>
     <hr />
@@ -27,4 +58,4 @@
     <h4>{{this.displayresult.result}}</h4>
     <p>{{this.displayresult.message}}</p>
   </div>
-</div>
+</div> -->

@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/auth.service';
 import { SeasonDetailComponent } from '../season-detail/season-detail.component';
 import { SeasonService } from 'src/app/season.service';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-season-edit-richard',
@@ -14,25 +15,19 @@ import { ActivatedRoute } from '@angular/router';
 export class SeasonEditRichardComponent implements OnInit {
 
   season: Season;
-  seasonEdit;
-  seasonNewName = '';
-  seasonNewDesc = '';
-  seasonNewImg = '';
-  seasonNewYear = 0;
-  displayresult = {};
-  showResultBox;
   sub: any;
+  myForm: FormGroup;
+  submitResult = ' ';
 
   constructor(
     private route: ActivatedRoute,
     private _seasonService: SeasonService,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
-    this.showResultBox = false;
     this.sub = this.route.params.subscribe(params => {
-      console.log(params['id']);
       return this._seasonService.getSeasonById(params.id)
         .subscribe(
           res => {
@@ -43,39 +38,44 @@ export class SeasonEditRichardComponent implements OnInit {
           err => console.log(err)
         )
     })
+    this.myForm = this.fb.group({
+      name: '',
+      description: '',
+      imageLink: '',
+      year: [null, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(5)]]
+    });;
   }
 
 
   editSeason() {
     if (this._authService.loggedIn) {
       this.sub = this.route.params.subscribe(params => {
-        this.seasonEdit = new Season(this.season._id, this.seasonNewName, this.seasonNewDesc, this.seasonNewImg, this.seasonNewYear)
-        this._seasonService.editSeason(this.seasonEdit)
+        this._seasonService.editSeason(this.myForm.value, params.id)
           .subscribe(
             res => {
-              this.displayresult = {
-                result: "success",
-                message: "Season " + this.season.name + " was edited succesfully"
-              };
-              this.showResult();
+              console.log(res)
+              this.submitResult = 'Season edited succesfully';
             },
             err => {
-              console.log(err);
-              this.displayresult = {
-                result: "Failed",
-                message: JSON.stringify(err.error.err.errors.description.message)
-              };
-              this.showResult();
+              this.submitResult = err.error.Error;
+              console.log(err)
             }
           )
       });
     }
   }
 
-  showResult() {
-    this.showResultBox = true;
-    setTimeout(() => {
-      this.showResultBox = false;
-    }, 5000);
+  get year() {
+    return this.myForm.get('year');
+  }
+
+  validateYear() {
+    return this.year.hasError('required') ? 'In which year did this season get released?' :
+      this.year.hasError('min') ? 'too low' :
+        this.year.hasError('max') ? 'too high' :
+          '';
   }
 }

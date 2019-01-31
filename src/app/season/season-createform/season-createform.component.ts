@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { OperatorService } from '../../operator.service';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../../auth.guard';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SeasonService } from 'src/app/season.service';
 
 @Component({
-  selector: 'app-operator-create',
-  templateUrl: './operator-create.component.html',
-  styleUrls: ['./operator-create.component.css']
+  selector: 'app-season-createform',
+  templateUrl: './season-createform.component.html',
+  styleUrls: ['./season-createform.component.css']
 })
-export class OperatorCreateComponent implements OnInit {
+export class SeasonCreateformComponent implements OnInit {
 
   myForm: FormGroup;
   submitResult = ' ';
 
   constructor(
-    private _operatorService: OperatorService,
+    private _seasonService: SeasonService,
     private _router: Router,
     private _authGuard: AuthGuard,
     private fb: FormBuilder
@@ -30,13 +30,15 @@ export class OperatorCreateComponent implements OnInit {
         Validators.required]],
       imageLink: ['', [
         Validators.required]],
-      side: [null, [
-        Validators.required]]
+      year: [null, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(5)]]
     });
   }
 
-  createOperator() {
-    this._operatorService.createOperator(this.myForm.value)
+  createSeason() {
+    this._seasonService.createSeason(this.myForm.value)
       .subscribe(
         res => {
           console.log(res)
@@ -47,7 +49,6 @@ export class OperatorCreateComponent implements OnInit {
           console.log(err)
         }
       )
-
   }
 
   get name() {
@@ -62,27 +63,29 @@ export class OperatorCreateComponent implements OnInit {
     return this.myForm.get('imageLink');
   }
 
-  get side() {
-    return this.myForm.get('side');
+  get year() {
+    return this.myForm.get('year');
+  }
+
+  validateYear() {
+    return this.year.hasError('required') ? 'In which year did this season get released?' :
+      this.year.hasError('min') ? 'too low' :
+        this.year.hasError('max') ? 'too high' :
+          '';
   }
 
   validateName(str: String) {
     return this.name.hasError('required') ? 'You must enter a name' :
-      '';
+          '';
   }
 
   validateDescription(str: String) {
     return this.description.hasError('required') ? 'You must enter a description' :
-      '';
+          '';
   }
 
   validateImageLink(str: String) {
     return this.imageLink.hasError('required') ? 'You must enter an image link' :
-      '';
-  }
-
-  validateSide() {
-    return this.side.hasError('required') ? 'You must select a side' :
-      '';
+          '';
   }
 }

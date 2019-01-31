@@ -39,7 +39,7 @@ export class SeasonEditComponent implements OnInit {
     if (this._authService.loggedIn) {
       this.sub = this.route.params.subscribe(params => {
         this.seasonEdit = new Season(this.season._id, this.seasonNewName, this.seasonNewDesc, this.seasonNewImg, this.seasonNewYear)
-        this._seasonService.editSeason(this.seasonEdit)
+        this._seasonService.editSeason(this.seasonEdit, this.season._id)
           .subscribe(
             res => {
               this._seasonComp.refreshSeasons();

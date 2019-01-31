@@ -26,7 +26,6 @@ import { MapDetailComponent } from './map/map-detail/map-detail.component';
 import { MapCreateComponent } from './map/map-create/map-create.component';
 import { SeasonComponent } from './season/season.component';
 import { SeasonDetailComponent } from './season/season-detail/season-detail.component';
-import { SeasonCreateComponent } from './season/season-create/season-create.component';
 import { SeasonEditComponent } from './season/season-edit/season-edit.component';
 import { SeasonPopulateComponent } from './season/season-populate/season-populate.component';
 import { OperatorPopoutComponent } from './operator/operator-popout/operator-popout.component';
@@ -38,6 +37,15 @@ import { SeasonService } from './season.service';
 import { UserService } from './user.service';
 import { SeasonEditRichardComponent } from './season/season-edit-richard/season-edit-richard.component';
 import { SeasonDeleteComponent } from './season/season-delete/season-delete.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { Browser } from 'protractor';
+import { SeasonCreateformComponent } from './season/season-createform/season-createform.component';
 
 @NgModule({
   declarations: [
@@ -60,21 +68,27 @@ import { SeasonDeleteComponent } from './season/season-delete/season-delete.comp
     MapCreateComponent,
     SeasonComponent,
     SeasonDetailComponent,
-    SeasonCreateComponent,
     SeasonEditComponent,
     SeasonPopulateComponent,
     OperatorPopoutComponent,
     MapPopoutComponent,
     SeasonPopoutComponent,
     SeasonEditRichardComponent,
-    SeasonDeleteComponent
+    SeasonDeleteComponent,
+    SeasonCreateformComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatChipsModule
   ],
   providers: [HttpClientModule, BackendService, AuthGuard, AuthService, OperatorService, SeasonService, MapService, UserService,
   {

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SeasonCreateComponent } from './season-create.component';
+import { SeasonCreateformComponent } from './season-createform.component';
 
-describe('SeasonCreateComponent', () => {
-  let component: SeasonCreateComponent;
-  let fixture: ComponentFixture<SeasonCreateComponent>;
+describe('SeasonCreateformComponent', () => {
+  let component: SeasonCreateformComponent;
+  let fixture: ComponentFixture<SeasonCreateformComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SeasonCreateComponent ]
+      declarations: [ SeasonCreateformComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SeasonCreateComponent);
+    fixture = TestBed.createComponent(SeasonCreateformComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

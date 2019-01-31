@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Season } from '../season.model';
 import { AuthService } from 'src/app/auth.service';
 import { SeasonService } from 'src/app/season.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-season-delete',
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SeasonDeleteComponent implements OnInit {
 
-  season: Season;
+  season: {name: '', _id: ''};
   displayresult = {};
   showResultBox;
   sub: any;
@@ -19,13 +19,13 @@ export class SeasonDeleteComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private _seasonService: SeasonService,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _router: Router
   ) { }
 
   ngOnInit() {
     this.showResultBox = false;
     this.sub = this.route.params.subscribe(params => {
-      console.log(params['id']);
       return this._seasonService.getSeasonById(params.id)
         .subscribe(
           res => {
@@ -48,6 +48,7 @@ export class SeasonDeleteComponent implements OnInit {
           message: "Season was deleted succesfully"
         };
         this.showResult();
+        this._router.navigate(['/seasons'])
       },
       err => console.log(err)
     )
